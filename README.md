@@ -1,3 +1,9 @@
+#http://r.luhui.net
+
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3bca7e0b-28dc-4a54-9959-f8821566f8b5/deploy-status)](https://app.netlify.com/sites/ryuyan/deploys)
+
+
 # [R-Tutor](http://cran.r-project.org/doc/contrib/Liu-FAQ.pdf)
 
 野生码农在R语言工程化的道路上持续努力中。
