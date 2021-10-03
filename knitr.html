@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>20 用R制作研究报告 | R语言教程</title>
+  <meta name="description" content="李东风在北京大学数学科学学院开设本科生《统计软件》教材。采用R的bookdown制作，输出格式为bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="20 用R制作研究报告 | R语言教程" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="李东风在北京大学数学科学学院开设本科生《统计软件》教材。采用R的bookdown制作，输出格式为bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="20 用R制作研究报告 | R语言教程" />
+  
+  <meta name="twitter:description" content="李东风在北京大学数学科学学院开设本科生《统计软件》教材。采用R的bookdown制作，输出格式为bookdown::gitbook." />
+  
+
+<meta name="author" content="李东风" />
+
+
+<meta name="date" content="2020-12-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="p-advfunc.html"/>
+<link rel="next" href="markdown.html"/>
+<script src="static/js/jquery.min.js"></script>
+<link href="static/css/style.css" rel="stylesheet" />
+<link href="static/css/plugin-table.css" rel="stylesheet" />
+<link href="static/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="static/css/plugin-highlight.css" rel="stylesheet" />
+<link href="static/css/plugin-search.css" rel="stylesheet" />
+<link href="static/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="static/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="static/js/empty-anchor.js"></script>
+<script src="static/js/htmlwidgets.js"></script>
+<link href="static/css/str_view.css" rel="stylesheet" />
+<script src="static/js/str_view.js"></script>
+<link href="static/css/wordcloud.css" rel="stylesheet" />
+<script src="static/js/wordcloud2-all.js"></script>
+<script src="static/js/hover.js"></script>
+<script src="static/js/wordcloud2.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+   src="static/js/mathjax.js">
+</script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://www.math.pku.edu.cn/teachers/lidf/docs/Rbook/html/_Rbook/index.html">R语言教程</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a></li>
+<li class="part"><span><b>I 介绍</b></span></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> R语言介绍</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#intro-hist-char"><i class="fa fa-check"></i><b>1.1</b> R的历史和特点</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#intro-hc-hist"><i class="fa fa-check"></i><b>1.1.1</b> R的历史</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#intro-hc-char"><i class="fa fa-check"></i><b>1.1.2</b> R的特点</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#intro-install"><i class="fa fa-check"></i><b>1.2</b> R的下载与安装</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#intro-ins-down"><i class="fa fa-check"></i><b>1.2.1</b> R的下载</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#intro-ins-install"><i class="fa fa-check"></i><b>1.2.2</b> R软件安装</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#intro-ins-other-soft"><i class="fa fa-check"></i><b>1.2.3</b> 辅助软件</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#intro-ins-packages"><i class="fa fa-check"></i><b>1.3</b> R扩展软件包的安装与管理</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#intro-ins-pack-ins"><i class="fa fa-check"></i><b>1.3.1</b> 安装</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#intro-ins-pack-gitbioc"><i class="fa fa-check"></i><b>1.3.2</b> Github和BioConductor的扩展包</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#intro-ins-pack-upd"><i class="fa fa-check"></i><b>1.3.3</b> 更新扩展包</a></li>
+<li class="chapter" data-level="1.3.4" data-path="intro.html"><a href="intro.html#intro-ins-pack-verup"><i class="fa fa-check"></i><b>1.3.4</b> 迁移扩展包</a></li>
+<li class="chapter" data-level="1.3.5" data-path="intro.html"><a href="intro.html#intro-ins-pack-renv"><i class="fa fa-check"></i><b>1.3.5</b> 项目私有扩展包目录</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#intro-ruse"><i class="fa fa-check"></i><b>1.4</b> 基本R软件的用法</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#intro-ruse-run"><i class="fa fa-check"></i><b>1.4.1</b> 基本运行</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#intro-ruse-proj"><i class="fa fa-check"></i><b>1.4.2</b> 项目目录</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#intro-rstudio"><i class="fa fa-check"></i><b>1.5</b> RStudio软件</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#intro-rstudio-intro"><i class="fa fa-check"></i><b>1.5.1</b> 介绍</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#intro-rstudio-proj"><i class="fa fa-check"></i><b>1.5.2</b> 项目</a></li>
+<li class="chapter" data-level="1.5.3" data-path="intro.html"><a href="intro.html#intro-rstudio-help"><i class="fa fa-check"></i><b>1.5.3</b> 帮助</a></li>
+<li class="chapter" data-level="1.5.4" data-path="intro.html"><a href="intro.html#intro-rstudio-shortcuts"><i class="fa fa-check"></i><b>1.5.4</b> 使用技巧</a></li>
+<li class="chapter" data-level="1.5.5" data-path="intro.html"><a href="intro.html#intro-rstudio-rmd"><i class="fa fa-check"></i><b>1.5.5</b> Rmd文件</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#intro-ins-ex"><i class="fa fa-check"></i><b>1.6</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro-example.html"><a href="intro-example.html"><i class="fa fa-check"></i><b>2</b> R语言入门运行样例</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro-example.html"><a href="intro-example.html#i-e-command-line"><i class="fa fa-check"></i><b>2.1</b> 命令行界面</a></li>
+<li class="chapter" data-level="2.2" data-path="intro-example.html"><a href="intro-example.html#i-e-arith-op"><i class="fa fa-check"></i><b>2.2</b> 四则运算</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro-example.html"><a href="intro-example.html#i-e-arith-op-poker"><i class="fa fa-check"></i><b>2.2.1</b> 计算例子</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro-example.html"><a href="intro-example.html#i-e-a-o-ex"><i class="fa fa-check"></i><b>2.2.2</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro-example.html"><a href="intro-example.html#i-e-math-func"><i class="fa fa-check"></i><b>2.3</b> 数学函数</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro-example.html"><a href="intro-example.html#i-e-m-f-sqrt"><i class="fa fa-check"></i><b>2.3.1</b> 数学函数——平方根、指数、对数</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro-example.html"><a href="intro-example.html#i-e-m-f-round"><i class="fa fa-check"></i><b>2.3.2</b> 数学函数——取整</a></li>
+<li class="chapter" data-level="2.3.3" data-path="intro-example.html"><a href="intro-example.html#i-e-m-f-sin"><i class="fa fa-check"></i><b>2.3.3</b> 数学函数——三角函数</a></li>
+<li class="chapter" data-level="2.3.4" data-path="intro-example.html"><a href="intro-example.html#i-e-m-f-asin"><i class="fa fa-check"></i><b>2.3.4</b> 数学函数——反三角函数</a></li>
+<li class="chapter" data-level="2.3.5" data-path="intro-example.html"><a href="intro-example.html#i-e-m-f-dist"><i class="fa fa-check"></i><b>2.3.5</b> 分布函数和分位数函数</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro-example.html"><a href="intro-example.html#i-e-output"><i class="fa fa-check"></i><b>2.4</b> 输出</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="intro-example.html"><a href="intro-example.html#i-e-o-simple"><i class="fa fa-check"></i><b>2.4.1</b> 简单输出</a></li>
+<li class="chapter" data-level="2.4.2" data-path="intro-example.html"><a href="intro-example.html#i-e-o-sink"><i class="fa fa-check"></i><b>2.4.2</b> 用<code>sink()</code>函数作运行记录</a></li>
+<li class="chapter" data-level="2.4.3" data-path="intro-example.html"><a href="intro-example.html#i-e-o-ex"><i class="fa fa-check"></i><b>2.4.3</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro-example.html"><a href="intro-example.html#i-e-vector"><i class="fa fa-check"></i><b>2.5</b> 向量计算与变量赋值</a></li>
+<li class="chapter" data-level="2.6" data-path="intro-example.html"><a href="intro-example.html#i-e-workspace"><i class="fa fa-check"></i><b>2.6</b> 工作空间介绍</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="intro-example.html"><a href="intro-example.html#i-e-w-ex"><i class="fa fa-check"></i><b>2.6.1</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="intro-example.html"><a href="intro-example.html#i-e-graph"><i class="fa fa-check"></i><b>2.7</b> 绘图示例</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="intro-example.html"><a href="intro-example.html#i-e-g-curve"><i class="fa fa-check"></i><b>2.7.1</b> 函数曲线示例</a></li>
+<li class="chapter" data-level="2.7.2" data-path="intro-example.html"><a href="intro-example.html#i-e-g-barplot"><i class="fa fa-check"></i><b>2.7.2</b> 条形图示例</a></li>
+<li class="chapter" data-level="2.7.3" data-path="intro-example.html"><a href="intro-example.html#i-e-g-scatter"><i class="fa fa-check"></i><b>2.7.3</b> 散点图示例</a></li>
+<li class="chapter" data-level="2.7.4" data-path="intro-example.html"><a href="intro-example.html#i-e-g-demo"><i class="fa fa-check"></i><b>2.7.4</b> R软件自带的图形示例</a></li>
+<li class="chapter" data-level="2.7.5" data-path="intro-example.html"><a href="intro-example.html#i-e-g-ex"><i class="fa fa-check"></i><b>2.7.5</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="intro-example.html"><a href="intro-example.html#i-e-summary"><i class="fa fa-check"></i><b>2.8</b> 汇总统计示例</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="intro-example.html"><a href="intro-example.html#i-e-s-table"><i class="fa fa-check"></i><b>2.8.1</b> 表格数据</a></li>
+<li class="chapter" data-level="2.8.2" data-path="intro-example.html"><a href="intro-example.html#i-e-s-t-read-table"><i class="fa fa-check"></i><b>2.8.2</b> 读入表格数据</a></li>
+<li class="chapter" data-level="2.8.3" data-path="intro-example.html"><a href="intro-example.html#i-e-s-ex"><i class="fa fa-check"></i><b>2.8.3</b> 练习</a></li>
+<li class="chapter" data-level="2.8.4" data-path="intro-example.html"><a href="intro-example.html#i-e-s-qual-freq"><i class="fa fa-check"></i><b>2.8.4</b> 分类变量频数统计</a></li>
+<li class="chapter" data-level="2.8.5" data-path="intro-example.html"><a href="intro-example.html#i-e-s-num-summ"><i class="fa fa-check"></i><b>2.8.5</b> 数值型变量的统计</a></li>
+<li class="chapter" data-level="2.8.6" data-path="intro-example.html"><a href="intro-example.html#i-e-s-ex2"><i class="fa fa-check"></i><b>2.8.6</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="intro-example.html"><a href="intro-example.html#i-e-source"><i class="fa fa-check"></i><b>2.9</b> 运行源程序文件</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="intro-example.html"><a href="intro-example.html#i-e-source-enc"><i class="fa fa-check"></i><b>2.9.1</b> 源文件编码</a></li>
+<li class="chapter" data-level="2.9.2" data-path="intro-example.html"><a href="intro-example.html#i-e-cwd"><i class="fa fa-check"></i><b>2.9.2</b> 当前工作目录</a></li>
+<li class="chapter" data-level="2.9.3" data-path="intro-example.html"><a href="intro-example.html#i-e-source-ex"><i class="fa fa-check"></i><b>2.9.3</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="intro-example.html"><a href="intro-example.html#i-e-appendix-data"><i class="fa fa-check"></i><b>2.10</b> 附录：数据</a><ul>
+<li class="chapter" data-level="2.10.1" data-path="intro-example.html"><a href="intro-example.html#i-e-appendix-data-tax"><i class="fa fa-check"></i><b>2.10.1</b> 公司纳税数据样例</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II 数据类型与相应的运算</b></span></li>
+<li class="chapter" data-level="3" data-path="prog-type-intro.html"><a href="prog-type-intro.html"><i class="fa fa-check"></i><b>3</b> 常量与变量</a><ul>
+<li class="chapter" data-level="3.1" data-path="prog-type-intro.html"><a href="prog-type-intro.html#p-t-const"><i class="fa fa-check"></i><b>3.1</b> 常量</a></li>
+<li class="chapter" data-level="3.2" data-path="prog-type-intro.html"><a href="prog-type-intro.html#p-t-cv-var"><i class="fa fa-check"></i><b>3.2</b> 变量</a></li>
+<li class="chapter" data-level="3.3" data-path="prog-type-intro.html"><a href="prog-type-intro.html#p-t-type"><i class="fa fa-check"></i><b>3.3</b> R数据类型</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="prog-type-num.html"><a href="prog-type-num.html"><i class="fa fa-check"></i><b>4</b> 数值型向量及其运算</a><ul>
+<li class="chapter" data-level="4.1" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-num"><i class="fa fa-check"></i><b>4.1</b> 数值型向量</a></li>
+<li class="chapter" data-level="4.2" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-arith"><i class="fa fa-check"></i><b>4.2</b> 向量运算</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-arith-scalar"><i class="fa fa-check"></i><b>4.2.1</b> 标量和标量运算</a></li>
+<li class="chapter" data-level="4.2.2" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-arith-vec-with-scalar"><i class="fa fa-check"></i><b>4.2.2</b> 向量与标量运算</a></li>
+<li class="chapter" data-level="4.2.3" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-arith-vec-eq-len"><i class="fa fa-check"></i><b>4.2.3</b> 等长向量运算</a></li>
+<li class="chapter" data-level="4.2.4" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-arith-vec-uneq-len"><i class="fa fa-check"></i><b>4.2.4</b> 不等长向量的运算</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-vfunc"><i class="fa fa-check"></i><b>4.3</b> 向量函数</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-vfunc-vector-func"><i class="fa fa-check"></i><b>4.3.1</b> 向量化的函数</a></li>
+<li class="chapter" data-level="4.3.2" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-vfunc-sort"><i class="fa fa-check"></i><b>4.3.2</b> 排序函数</a></li>
+<li class="chapter" data-level="4.3.3" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-vfunc-stat"><i class="fa fa-check"></i><b>4.3.3</b> 统计函数</a></li>
+<li class="chapter" data-level="4.3.4" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-vfunc-seq"><i class="fa fa-check"></i><b>4.3.4</b> 生成规则序列的函数</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-complex"><i class="fa fa-check"></i><b>4.4</b> 复数向量</a></li>
+<li class="chapter" data-level="4.5" data-path="prog-type-num.html"><a href="prog-type-num.html#p-t-vfunc-ex"><i class="fa fa-check"></i><b>4.5</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prog-type-logi.html"><a href="prog-type-logi.html"><i class="fa fa-check"></i><b>5</b> 逻辑型向量及其运算</a><ul>
+<li class="chapter" data-level="5.1" data-path="prog-type-logi.html"><a href="prog-type-logi.html#p-t-logical-vec"><i class="fa fa-check"></i><b>5.1</b> 逻辑型向量与比较运算</a></li>
+<li class="chapter" data-level="5.2" data-path="prog-type-logi.html"><a href="prog-type-logi.html#p-t-lvec-logic-op"><i class="fa fa-check"></i><b>5.2</b> 逻辑运算</a></li>
+<li class="chapter" data-level="5.3" data-path="prog-type-logi.html"><a href="prog-type-logi.html#p-t-lvec-logic-op-vec"><i class="fa fa-check"></i><b>5.3</b> 逻辑运算函数</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="prog-type-char.html"><a href="prog-type-char.html"><i class="fa fa-check"></i><b>6</b> 字符型数据及其处理</a><ul>
+<li class="chapter" data-level="6.1" data-path="prog-type-char.html"><a href="prog-type-char.html#p-t-char"><i class="fa fa-check"></i><b>6.1</b> 字符型向量</a></li>
+<li class="chapter" data-level="6.2" data-path="prog-type-char.html"><a href="prog-type-char.html#p-t-char-paste"><i class="fa fa-check"></i><b>6.2</b> <code>paste()</code>函数</a></li>
+<li class="chapter" data-level="6.3" data-path="prog-type-char.html"><a href="prog-type-char.html#p-t-char-toupper"><i class="fa fa-check"></i><b>6.3</b> 转换大小写</a></li>
+<li class="chapter" data-level="6.4" data-path="prog-type-char.html"><a href="prog-type-char.html#p-t-char-nchar"><i class="fa fa-check"></i><b>6.4</b> 字符串长度</a></li>
+<li class="chapter" data-level="6.5" data-path="prog-type-char.html"><a href="prog-type-char.html#p-t-char-substr"><i class="fa fa-check"></i><b>6.5</b> 取子串</a></li>
+<li class="chapter" data-level="6.6" data-path="prog-type-char.html"><a href="prog-type-char.html#p-t-char-asnum"><i class="fa fa-check"></i><b>6.6</b> 类型转换</a></li>
+<li class="chapter" data-level="6.7" data-path="prog-type-char.html"><a href="prog-type-char.html#p-t-char-strsplit"><i class="fa fa-check"></i><b>6.7</b> 字符串拆分</a></li>
+<li class="chapter" data-level="6.8" data-path="prog-type-char.html"><a href="prog-type-char.html#p-t-char-gsub"><i class="fa fa-check"></i><b>6.8</b> 字符串替换功能</a></li>
+<li class="chapter" data-level="6.9" data-path="prog-type-char.html"><a href="prog-type-char.html#p-t-char-regexp"><i class="fa fa-check"></i><b>6.9</b> 正则表达式</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="prog-type-index.html"><a href="prog-type-index.html"><i class="fa fa-check"></i><b>7</b> R向量下标和子集</a><ul>
+<li class="chapter" data-level="7.1" data-path="prog-type-index.html"><a href="prog-type-index.html#p-t-subset-int"><i class="fa fa-check"></i><b>7.1</b> 正整数下标</a></li>
+<li class="chapter" data-level="7.2" data-path="prog-type-index.html"><a href="prog-type-index.html#p-t-subset-negint"><i class="fa fa-check"></i><b>7.2</b> 负整数下标</a></li>
+<li class="chapter" data-level="7.3" data-path="prog-type-index.html"><a href="prog-type-index.html#p-t-subset-all"><i class="fa fa-check"></i><b>7.3</b> 空下标与零下标</a></li>
+<li class="chapter" data-level="7.4" data-path="prog-type-index.html"><a href="prog-type-index.html#p-t-subset-over"><i class="fa fa-check"></i><b>7.4</b> 下标超界</a></li>
+<li class="chapter" data-level="7.5" data-path="prog-type-index.html"><a href="prog-type-index.html#p-t-subset-logic"><i class="fa fa-check"></i><b>7.5</b> 逻辑下标</a></li>
+<li class="chapter" data-level="7.6" data-path="prog-type-index.html"><a href="prog-type-index.html#p-t-subset-which"><i class="fa fa-check"></i><b>7.6</b> <code>which()</code>、<code>which.min()</code>、<code>which.max()</code>函数</a></li>
+<li class="chapter" data-level="7.7" data-path="prog-type-index.html"><a href="prog-type-index.html#p-t-subset-names"><i class="fa fa-check"></i><b>7.7</b> 元素名</a></li>
+<li class="chapter" data-level="7.8" data-path="prog-type-index.html"><a href="prog-type-index.html#p-t-subset-mapping"><i class="fa fa-check"></i><b>7.8</b> 用R向量下标作映射</a></li>
+<li class="chapter" data-level="7.9" data-path="prog-type-index.html"><a href="prog-type-index.html#p-t-subset-set"><i class="fa fa-check"></i><b>7.9</b> 集合运算</a></li>
+<li class="chapter" data-level="7.10" data-path="prog-type-index.html"><a href="prog-type-index.html#p-t-set-ex"><i class="fa fa-check"></i><b>7.10</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="prog-type-attr.html"><a href="prog-type-attr.html"><i class="fa fa-check"></i><b>8</b> R数据类型的性质</a><ul>
+<li class="chapter" data-level="8.1" data-path="prog-type-attr.html"><a href="prog-type-attr.html#p-t-modes-typeof"><i class="fa fa-check"></i><b>8.1</b> 存储模式与基本类型</a></li>
+<li class="chapter" data-level="8.2" data-path="prog-type-attr.html"><a href="prog-type-attr.html#p-t-modes-as"><i class="fa fa-check"></i><b>8.2</b> 类型转换与类型升档</a></li>
+<li class="chapter" data-level="8.3" data-path="prog-type-attr.html"><a href="prog-type-attr.html#p-t-modes-attr"><i class="fa fa-check"></i><b>8.3</b> 属性</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="prog-type-attr.html"><a href="prog-type-attr.html#p-t-modes-attr-asfun"><i class="fa fa-check"></i><b>8.3.1</b> <code>attributes</code>函数</a></li>
+<li class="chapter" data-level="8.3.2" data-path="prog-type-attr.html"><a href="prog-type-attr.html#p-t-modes-attr-attrfun"><i class="fa fa-check"></i><b>8.3.2</b> <code>attr</code>函数</a></li>
+<li class="chapter" data-level="8.3.3" data-path="prog-type-attr.html"><a href="prog-type-attr.html#p-t-modes-attr-names"><i class="fa fa-check"></i><b>8.3.3</b> <code>names</code>属性</a></li>
+<li class="chapter" data-level="8.3.4" data-path="prog-type-attr.html"><a href="prog-type-attr.html#p-t-modes-attr-dim"><i class="fa fa-check"></i><b>8.3.4</b> <code>dim</code>属性</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="prog-type-attr.html"><a href="prog-type-attr.html#p-t-modes-class"><i class="fa fa-check"></i><b>8.4</b> 类属</a></li>
+<li class="chapter" data-level="8.5" data-path="prog-type-attr.html"><a href="prog-type-attr.html#p-t-modes-str"><i class="fa fa-check"></i><b>8.5</b> <code>str()</code>函数</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="prog-type-date.html"><a href="prog-type-date.html"><i class="fa fa-check"></i><b>9</b> R日期时间</a><ul>
+<li class="chapter" data-level="9.1" data-path="prog-type-date.html"><a href="prog-type-date.html#prog-type-dt-intro"><i class="fa fa-check"></i><b>9.1</b> R日期和日期时间类型</a></li>
+<li class="chapter" data-level="9.2" data-path="prog-type-date.html"><a href="prog-type-date.html#prog-type-dt-fromchr"><i class="fa fa-check"></i><b>9.2</b> 从字符串生成日期数据</a></li>
+<li class="chapter" data-level="9.3" data-path="prog-type-date.html"><a href="prog-type-date.html#p-t-date-format"><i class="fa fa-check"></i><b>9.3</b> 日期显示格式</a></li>
+<li class="chapter" data-level="9.4" data-path="prog-type-date.html"><a href="prog-type-date.html#p-t-date-comp"><i class="fa fa-check"></i><b>9.4</b> 访问日期时间的组成值</a></li>
+<li class="chapter" data-level="9.5" data-path="prog-type-date.html"><a href="prog-type-date.html#p-t-date-round"><i class="fa fa-check"></i><b>9.5</b> 日期舍入计算</a></li>
+<li class="chapter" data-level="9.6" data-path="prog-type-date.html"><a href="prog-type-date.html#p-t-date-calc"><i class="fa fa-check"></i><b>9.6</b> 日期计算</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="prog-type-date.html"><a href="prog-type-date.html#p-t-date-calc-dur"><i class="fa fa-check"></i><b>9.6.1</b> 时间长度</a></li>
+<li class="chapter" data-level="9.6.2" data-path="prog-type-date.html"><a href="prog-type-date.html#p-t-date-calc-per"><i class="fa fa-check"></i><b>9.6.2</b> 时间周期</a></li>
+<li class="chapter" data-level="9.6.3" data-path="prog-type-date.html"><a href="prog-type-date.html#p-t-date-calc-int"><i class="fa fa-check"></i><b>9.6.3</b> 时间区间</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="prog-type-date.html"><a href="prog-type-date.html#prog-type-dt-baser"><i class="fa fa-check"></i><b>9.7</b> 基本R软件的日期功能</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="prog-type-date.html"><a href="prog-type-date.html#p-t-date-baser-gen"><i class="fa fa-check"></i><b>9.7.1</b> 生成日期和日期时间型数据</a></li>
+<li class="chapter" data-level="9.7.2" data-path="prog-type-date.html"><a href="prog-type-date.html#p-t-date-baser-comp"><i class="fa fa-check"></i><b>9.7.2</b> 取出日期时间的组成值</a></li>
+<li class="chapter" data-level="9.7.3" data-path="prog-type-date.html"><a href="prog-type-date.html#p-t-date-baser-calc"><i class="fa fa-check"></i><b>9.7.3</b> 日期计算</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="prog-type-date.html"><a href="prog-type-date.html#p-t-date-ex"><i class="fa fa-check"></i><b>9.8</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="prog-type-fact.html"><a href="prog-type-fact.html"><i class="fa fa-check"></i><b>10</b> R因子类型</a><ul>
+<li class="chapter" data-level="10.1" data-path="prog-type-fact.html"><a href="prog-type-fact.html#p-t-fact"><i class="fa fa-check"></i><b>10.1</b> 因子</a></li>
+<li class="chapter" data-level="10.2" data-path="prog-type-fact.html"><a href="prog-type-fact.html#p-t-factor-table"><i class="fa fa-check"></i><b>10.2</b> <code>table()</code>函数</a></li>
+<li class="chapter" data-level="10.3" data-path="prog-type-fact.html"><a href="prog-type-fact.html#p-t-factor-tapply"><i class="fa fa-check"></i><b>10.3</b> <code>tapply()</code>函数</a></li>
+<li class="chapter" data-level="10.4" data-path="prog-type-fact.html"><a href="prog-type-fact.html#summ-by-forcats"><i class="fa fa-check"></i><b>10.4</b> forcats包的因子函数</a></li>
+<li class="chapter" data-level="10.5" data-path="prog-type-fact.html"><a href="prog-type-fact.html#p-t-factor-ex"><i class="fa fa-check"></i><b>10.5</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="prog-type-list.html"><a href="prog-type-list.html"><i class="fa fa-check"></i><b>11</b> 列表类型</a><ul>
+<li class="chapter" data-level="11.1" data-path="prog-type-list.html"><a href="prog-type-list.html#p-t-list"><i class="fa fa-check"></i><b>11.1</b> 列表</a></li>
+<li class="chapter" data-level="11.2" data-path="prog-type-list.html"><a href="prog-type-list.html#p-t-list-access"><i class="fa fa-check"></i><b>11.2</b> 列表元素访问</a></li>
+<li class="chapter" data-level="11.3" data-path="prog-type-list.html"><a href="prog-type-list.html#p-t-list-as"><i class="fa fa-check"></i><b>11.3</b> 列表类型转换</a></li>
+<li class="chapter" data-level="11.4" data-path="prog-type-list.html"><a href="prog-type-list.html#p-t-list-ex-strsplit"><i class="fa fa-check"></i><b>11.4</b> 返回列表的函数示例–<code>strsplit()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html"><i class="fa fa-check"></i><b>12</b> R矩阵和数组</a><ul>
+<li class="chapter" data-level="12.1" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-matrix"><i class="fa fa-check"></i><b>12.1</b> R矩阵</a></li>
+<li class="chapter" data-level="12.2" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-subset"><i class="fa fa-check"></i><b>12.2</b> 矩阵子集</a></li>
+<li class="chapter" data-level="12.3" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-cbind"><i class="fa fa-check"></i><b>12.3</b> <code>cbind()</code>和<code>rbind()</code>函数</a></li>
+<li class="chapter" data-level="12.4" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-matop"><i class="fa fa-check"></i><b>12.4</b> 矩阵运算</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-matop-arith"><i class="fa fa-check"></i><b>12.4.1</b> 四则运算</a></li>
+<li class="chapter" data-level="12.4.2" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-matop-mult"><i class="fa fa-check"></i><b>12.4.2</b> 矩阵乘法</a></li>
+<li class="chapter" data-level="12.4.3" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-matop-vecmat"><i class="fa fa-check"></i><b>12.4.3</b> 向量与矩阵相乘</a></li>
+<li class="chapter" data-level="12.4.4" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-matop-inprod"><i class="fa fa-check"></i><b>12.4.4</b> 内积</a></li>
+<li class="chapter" data-level="12.4.5" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-matop-outer"><i class="fa fa-check"></i><b>12.4.5</b> 外积</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-solve"><i class="fa fa-check"></i><b>12.5</b> 逆矩阵与线性方程组求解</a></li>
+<li class="chapter" data-level="12.6" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-apply"><i class="fa fa-check"></i><b>12.6</b> <code>apply()</code>函数</a></li>
+<li class="chapter" data-level="12.7" data-path="prog-type-matrix.html"><a href="prog-type-matrix.html#p-t-array-array"><i class="fa fa-check"></i><b>12.7</b> 多维数组</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="prog-type-df.html"><a href="prog-type-df.html"><i class="fa fa-check"></i><b>13</b> 数据框</a><ul>
+<li class="chapter" data-level="13.1" data-path="prog-type-df.html"><a href="prog-type-df.html#p-t-dataframe"><i class="fa fa-check"></i><b>13.1</b> 数据框</a></li>
+<li class="chapter" data-level="13.2" data-path="prog-type-df.html"><a href="prog-type-df.html#p-t-df-access"><i class="fa fa-check"></i><b>13.2</b> 数据框内容访问</a></li>
+<li class="chapter" data-level="13.3" data-path="prog-type-df.html"><a href="prog-type-df.html#p-t-df-rownames"><i class="fa fa-check"></i><b>13.3</b> 数据框的行名</a></li>
+<li class="chapter" data-level="13.4" data-path="prog-type-df.html"><a href="prog-type-df.html#p-t-df-notmatrix"><i class="fa fa-check"></i><b>13.4</b> 数据框与矩阵的区别</a></li>
+<li class="chapter" data-level="13.5" data-path="prog-type-df.html"><a href="prog-type-df.html#p-t-df-gl-func"><i class="fa fa-check"></i><b>13.5</b> <code>tidyr::expand_grid()</code>函数</a></li>
+<li class="chapter" data-level="13.6" data-path="prog-type-df.html"><a href="prog-type-df.html#p-t-tibble"><i class="fa fa-check"></i><b>13.6</b> <code>tibble</code>类型</a></li>
+<li class="chapter" data-level="13.7" data-path="prog-type-df.html"><a href="prog-type-df.html#p-t-df-ex"><i class="fa fa-check"></i><b>13.7</b> 练习</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="prog-type-ws.html"><a href="prog-type-ws.html"><i class="fa fa-check"></i><b>14</b> 工作空间和变量赋值</a><ul>
+<li class="chapter" data-level="14.1" data-path="prog-type-ws.html"><a href="prog-type-ws.html#p-t-ws"><i class="fa fa-check"></i><b>14.1</b> 工作空间</a></li>
+<li class="chapter" data-level="14.2" data-path="prog-type-ws.html"><a href="prog-type-ws.html#p-t-nlvname"><i class="fa fa-check"></i><b>14.2</b> 非法变量名</a></li>
+<li class="chapter" data-level="14.3" data-path="prog-type-ws.html"><a href="prog-type-ws.html#p-t-ws-asign"><i class="fa fa-check"></i><b>14.3</b> 变量赋值与绑定</a></li>
+<li class="chapter" data-level="14.4" data-path="prog-type-ws.html"><a href="prog-type-ws.html#p-t-ws-env"><i class="fa fa-check"></i><b>14.4</b> 环境</a></li>
+</ul></li>
+<li class="part"><span><b>III 编程</b></span></li>
+<li class="chapter" data-level="15" data-path="prog-io.html"><a href="prog-io.html"><i class="fa fa-check"></i><b>15</b> R输入输出</a><ul>
+<li class="chapter" data-level="15.1" data-path="prog-io.html"><a href="prog-io.html#p-io-simple"><i class="fa fa-check"></i><b>15.1</b> 输入输出的简单方法</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="prog-io.html"><a href="prog-io.html#p-io-simple-out"><i class="fa fa-check"></i><b>15.1.1</b> 简单的输出</a></li>
+<li class="chapter" data-level="15.1.2" data-path="prog-io.html"><a href="prog-io.html#p-io-simple-input"><i class="fa fa-check"></i><b>15.1.2</b> 简单的输入</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="prog-io.html"><a href="prog-io.html#p-io-read-csv"><i class="fa fa-check"></i><b>15.2</b> 读取CSV文件</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="prog-io.html"><a href="prog-io.html#p-io-read-csv-format"><i class="fa fa-check"></i><b>15.2.1</b> CSV格式</a></li>
+<li class="chapter" data-level="15.2.2" data-path="prog-io.html"><a href="prog-io.html#p-io-read-csv-fromstr"><i class="fa fa-check"></i><b>15.2.2</b> 从字符串读入</a></li>
+<li class="chapter" data-level="15.2.3" data-path="prog-io.html"><a href="prog-io.html#p-io-read-csv-opt"><i class="fa fa-check"></i><b>15.2.3</b> <code>read_csv</code>选项</a></li>
+<li class="chapter" data-level="15.2.4" data-path="prog-io.html"><a href="prog-io.html#p-io-read-csv-enc"><i class="fa fa-check"></i><b>15.2.4</b> 编码设置</a></li>
+<li class="chapter" data-level="15.2.5" data-path="prog-io.html"><a href="prog-io.html#p-io-read-csv-na"><i class="fa fa-check"></i><b>15.2.5</b> 缺失值设置</a></li>
+<li class="chapter" data-level="15.2.6" data-path="prog-io.html"><a href="prog-io.html#p-io-read-csv-colt"><i class="fa fa-check"></i><b>15.2.6</b> 各列类型设置</a></li>
+<li class="chapter" data-level="15.2.7" data-path="prog-io.html"><a href="prog-io.html#p-io-read-csv-fact"><i class="fa fa-check"></i><b>15.2.7</b> 因子类型设置</a></li>
+<li class="chapter" data-level="15.2.8" data-path="prog-io.html"><a href="prog-io.html#p-io-read-csv-date"><i class="fa fa-check"></i><b>15.2.8</b> 读入日期</a></li>
+<li class="chapter" data-level="15.2.9" data-path="prog-io.html"><a href="prog-io.html#p-io-read-csv-funcs"><i class="fa fa-check"></i><b>15.2.9</b> 其它函数</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="prog-io.html"><a href="prog-io.html#p-io-excel"><i class="fa fa-check"></i><b>15.3</b> Excel表访问</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="prog-io.html"><a href="prog-io.html#p-io-excel-csv"><i class="fa fa-check"></i><b>15.3.1</b> 借助于文本格式</a></li>
+<li class="chapter" data-level="15.3.2" data-path="prog-io.html"><a href="prog-io.html#p-io-excel-clip"><i class="fa fa-check"></i><b>15.3.2</b> 使用剪贴板</a></li>
+<li class="chapter" data-level="15.3.3" data-path="prog-io.html"><a href="prog-io.html#p-io-excel-readxl"><i class="fa fa-check"></i><b>15.3.3</b> 利用readxl扩展包</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="prog-io.html"><a href="prog-io.html#p-io-file"><i class="fa fa-check"></i><b>15.4</b> 文件访问</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="prog-io.html"><a href="prog-io.html#p-io-file-conn"><i class="fa fa-check"></i><b>15.4.1</b> 连接</a></li>
+<li class="chapter" data-level="15.4.2" data-path="prog-io.html"><a href="prog-io.html#p-io-file-text"><i class="fa fa-check"></i><b>15.4.2</b> 文本文件访问</a></li>
+<li class="chapter" data-level="15.4.3" data-path="prog-io.html"><a href="prog-io.html#p-io-enc-batch"><i class="fa fa-check"></i><b>15.4.3</b> 文本文件分批读写</a></li>
+<li class="chapter" data-level="15.4.4" data-path="prog-io.html"><a href="prog-io.html#p-io-file-bin"><i class="fa fa-check"></i><b>15.4.4</b> 二进制文件访问</a></li>
+<li class="chapter" data-level="15.4.5" data-path="prog-io.html"><a href="prog-io.html#p-io-file-textcon"><i class="fa fa-check"></i><b>15.4.5</b> 字符型连接</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="prog-io.html"><a href="prog-io.html#p-io-enc"><i class="fa fa-check"></i><b>15.5</b> 中文编码问题</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="prog-io.html"><a href="prog-io.html#p-io-enc-base"><i class="fa fa-check"></i><b>15.5.1</b> 用基本R的读取函数读取</a></li>
+<li class="chapter" data-level="15.5.2" data-path="prog-io.html"><a href="prog-io.html#p-io-enc-readr"><i class="fa fa-check"></i><b>15.5.2</b> 用readr包读取</a></li>
+<li class="chapter" data-level="15.5.3" data-path="prog-io.html"><a href="prog-io.html#p-io-enc-write"><i class="fa fa-check"></i><b>15.5.3</b> 输出文件的编码</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="prog-io.html"><a href="prog-io.html#p-io-dir"><i class="fa fa-check"></i><b>15.6</b> 目录和文件管理</a></li>
+<li class="chapter" data-level="15.7" data-path="prog-io.html"><a href="prog-io.html#p-io-db"><i class="fa fa-check"></i><b>15.7</b> SQL数据库访问</a><ul>
+<li class="chapter" data-level="15.7.1" data-path="prog-io.html"><a href="prog-io.html#p-io-db-intro"><i class="fa fa-check"></i><b>15.7.1</b> 介绍</a></li>
+<li class="chapter" data-level="15.7.2" data-path="prog-io.html"><a href="prog-io.html#p-io-db-sqlite"><i class="fa fa-check"></i><b>15.7.2</b> SQLite数据库访问</a></li>
+<li class="chapter" data-level="15.7.3" data-path="prog-io.html"><a href="prog-io.html#p-io-db-sql"><i class="fa fa-check"></i><b>15.7.3</b> SQL命令简介</a></li>
+<li class="chapter" data-level="15.7.4" data-path="prog-io.html"><a href="prog-io.html#p-io-db-oracle"><i class="fa fa-check"></i><b>15.7.4</b> 访问Oracle数据库</a></li>
+<li class="chapter" data-level="15.7.5" data-path="prog-io.html"><a href="prog-io.html#p-io-db-mysql"><i class="fa fa-check"></i><b>15.7.5</b> MySQL数据库访问</a></li>
+<li class="chapter" data-level="15.7.6" data-path="prog-io.html"><a href="prog-io.html#p-io-excel-rodbc"><i class="fa fa-check"></i><b>15.7.6</b> 利用RODBC访问Access数据库</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="prog-control.html"><a href="prog-control.html"><i class="fa fa-check"></i><b>16</b> 程序控制结构</a><ul>
+<li class="chapter" data-level="16.1" data-path="prog-control.html"><a href="prog-control.html#p-con-exp"><i class="fa fa-check"></i><b>16.1</b> 表达式</a></li>
+<li class="chapter" data-level="16.2" data-path="prog-control.html"><a href="prog-control.html#p-con-if"><i class="fa fa-check"></i><b>16.2</b> 分支结构</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="prog-control.html"><a href="prog-control.html#p-con-logic-index"><i class="fa fa-check"></i><b>16.2.1</b> 用逻辑下标代替分支结构</a></li>
+<li class="chapter" data-level="16.2.2" data-path="prog-control.html"><a href="prog-control.html#p-con-ifelsef"><i class="fa fa-check"></i><b>16.2.2</b> <code>ifelse</code>函数</a></li>
+<li class="chapter" data-level="16.2.3" data-path="prog-control.html"><a href="prog-control.html#p-con-switch"><i class="fa fa-check"></i><b>16.2.3</b> <code>switch</code>函数</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="prog-control.html"><a href="prog-control.html#p-con-loop"><i class="fa fa-check"></i><b>16.3</b> 循环结构</a><ul>
+<li class="chapter" data-level="16.3.1" data-path="prog-control.html"><a href="prog-control.html#p-con-for"><i class="fa fa-check"></i><b>16.3.1</b> 计数循环</a></li>
+<li class="chapter" data-level="16.3.2" data-path="prog-control.html"><a href="prog-control.html#p-con-while"><i class="fa fa-check"></i><b>16.3.2</b> <code>while</code>循环和<code>repeat</code>循环</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="prog-control.html"><a href="prog-control.html#p-con-cond"><i class="fa fa-check"></i><b>16.4</b> R中判断条件</a></li>
+<li class="chapter" data-level="16.5" data-path="prog-control.html"><a href="prog-control.html#p-pipe"><i class="fa fa-check"></i><b>16.5</b> 管道控制</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="prog-func.html"><a href="prog-func.html"><i class="fa fa-check"></i><b>17</b> 函数</a><ul>
+<li class="chapter" data-level="17.1" data-path="prog-func.html"><a href="prog-func.html#p-func"><i class="fa fa-check"></i><b>17.1</b> 函数基础</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="prog-func.html"><a href="prog-func.html#p-func-intro"><i class="fa fa-check"></i><b>17.1.1</b> 介绍</a></li>
+<li class="chapter" data-level="17.1.2" data-path="prog-func.html"><a href="prog-func.html#p-func-def"><i class="fa fa-check"></i><b>17.1.2</b> 函数定义</a></li>
+<li class="chapter" data-level="17.1.3" data-path="prog-func.html"><a href="prog-func.html#p-func-call"><i class="fa fa-check"></i><b>17.1.3</b> 函数调用</a></li>
+<li class="chapter" data-level="17.1.4" data-path="prog-func.html"><a href="prog-func.html#p-func-recursive"><i class="fa fa-check"></i><b>17.1.4</b> 递归调用</a></li>
+<li class="chapter" data-level="17.1.5" data-path="prog-func.html"><a href="prog-func.html#p-func-vr"><i class="fa fa-check"></i><b>17.1.5</b> 向量化</a></li>
+<li class="chapter" data-level="17.1.6" data-path="prog-func.html"><a href="prog-func.html#p-func-anonymf"><i class="fa fa-check"></i><b>17.1.6</b> 无名函数</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="prog-func.html"><a href="prog-func.html#p-func-space"><i class="fa fa-check"></i><b>17.2</b> 变量作用域</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="prog-func.html"><a href="prog-func.html#p-func-global"><i class="fa fa-check"></i><b>17.2.1</b> 全局变量和工作空间</a></li>
+<li class="chapter" data-level="17.2.2" data-path="prog-func.html"><a href="prog-func.html#p-func-local"><i class="fa fa-check"></i><b>17.2.2</b> 局部变量</a></li>
+<li class="chapter" data-level="17.2.3" data-path="prog-func.html"><a href="prog-func.html#p-func-global-access"><i class="fa fa-check"></i><b>17.2.3</b> 在函数内访问全局变量</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="prog-prof.html"><a href="prog-prof.html"><i class="fa fa-check"></i><b>18</b> R程序效率</a><ul>
+<li class="chapter" data-level="18.1" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-effic"><i class="fa fa-check"></i><b>18.1</b> R的运行效率</a></li>
+<li class="chapter" data-level="18.2" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-vect"><i class="fa fa-check"></i><b>18.2</b> 向量化编程</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-vect-ex1"><i class="fa fa-check"></i><b>18.2.1</b> 示例1</a></li>
+<li class="chapter" data-level="18.2.2" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-vect-ex2"><i class="fa fa-check"></i><b>18.2.2</b> 示例2</a></li>
+<li class="chapter" data-level="18.2.3" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-vect-ex3"><i class="fa fa-check"></i><b>18.2.3</b> 示例3</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-loop"><i class="fa fa-check"></i><b>18.3</b> 减少显式循环</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-replicate"><i class="fa fa-check"></i><b>18.3.1</b> <code>replicate()</code>函数</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-copy"><i class="fa fa-check"></i><b>18.4</b> 避免制作副本</a></li>
+<li class="chapter" data-level="18.5" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mathfun"><i class="fa fa-check"></i><b>18.5</b> R的计算函数</a><ul>
+<li class="chapter" data-level="18.5.1" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mathfun-math"><i class="fa fa-check"></i><b>18.5.1</b> 数学函数</a></li>
+<li class="chapter" data-level="18.5.2" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mathfun-sum"><i class="fa fa-check"></i><b>18.5.2</b> 概括函数</a></li>
+<li class="chapter" data-level="18.5.3" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mathfun-max"><i class="fa fa-check"></i><b>18.5.3</b> 最值</a></li>
+<li class="chapter" data-level="18.5.4" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mathfun-sort"><i class="fa fa-check"></i><b>18.5.4</b> 排序</a></li>
+<li class="chapter" data-level="18.5.5" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mathfun-integrate"><i class="fa fa-check"></i><b>18.5.5</b> 一元定积分<code>integrate</code></a></li>
+<li class="chapter" data-level="18.5.6" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mathfun-uniroot"><i class="fa fa-check"></i><b>18.5.6</b> 一元函数求根<code>uniroot</code></a></li>
+<li class="chapter" data-level="18.5.7" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mathfun-fft"><i class="fa fa-check"></i><b>18.5.7</b> 离散傅立叶变换<code>fft</code></a></li>
+<li class="chapter" data-level="18.5.8" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mathfun-filter"><i class="fa fa-check"></i><b>18.5.8</b> 用<code>filter</code>函数作迭代</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mcpu"><i class="fa fa-check"></i><b>18.6</b> 并行计算</a><ul>
+<li class="chapter" data-level="18.6.1" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mcpu-ex1"><i class="fa fa-check"></i><b>18.6.1</b> 例1：完全不互相依赖的并行运算</a></li>
+<li class="chapter" data-level="18.6.2" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mcpu-ex2"><i class="fa fa-check"></i><b>18.6.2</b> 例2：使用相同随机数序列的并行计算</a></li>
+<li class="chapter" data-level="18.6.3" data-path="prog-prof.html"><a href="prog-prof.html#p-prof-mcpu-ex3"><i class="fa fa-check"></i><b>18.6.3</b> 例3：使用独立随机数序列的并行计算</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="p-advfunc.html"><a href="p-advfunc.html"><i class="fa fa-check"></i><b>19</b> 函数进阶</a><ul>
+<li class="chapter" data-level="19.1" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-callspe"><i class="fa fa-check"></i><b>19.1</b> 函数调用的各种形式</a></li>
+<li class="chapter" data-level="19.2" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-lex"><i class="fa fa-check"></i><b>19.2</b> 嵌套定义与句法作用域(lexical scoping)</a></li>
+<li class="chapter" data-level="19.3" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-inner"><i class="fa fa-check"></i><b>19.3</b> 辅助嵌套函数</a></li>
+<li class="chapter" data-level="19.4" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-lazy"><i class="fa fa-check"></i><b>19.4</b> 懒惰求值</a></li>
+<li class="chapter" data-level="19.5" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-debug"><i class="fa fa-check"></i><b>19.5</b> 程序调试</a><ul>
+<li class="chapter" data-level="19.5.1" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-debug-intro"><i class="fa fa-check"></i><b>19.5.1</b> 基本调试策略</a></li>
+<li class="chapter" data-level="19.5.2" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-debug-findfunc"><i class="fa fa-check"></i><b>19.5.2</b> 找到出错的函数</a></li>
+<li class="chapter" data-level="19.5.3" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-debug-browser"><i class="fa fa-check"></i><b>19.5.3</b> 跟踪调试</a></li>
+<li class="chapter" data-level="19.5.4" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-debug-cond"><i class="fa fa-check"></i><b>19.5.4</b> 条件断点</a></li>
+<li class="chapter" data-level="19.5.5" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-debug-debugf"><i class="fa fa-check"></i><b>19.5.5</b> 开启对一个函数的调试</a></li>
+<li class="chapter" data-level="19.5.6" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-debug-opt"><i class="fa fa-check"></i><b>19.5.6</b> 出错调试选项</a></li>
+<li class="chapter" data-level="19.5.7" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-debug-stop"><i class="fa fa-check"></i><b>19.5.7</b> <code>stop()</code>、<code>warning()</code>、<code>message()</code></a></li>
+<li class="chapter" data-level="19.5.8" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-debug-preventive"><i class="fa fa-check"></i><b>19.5.8</b> 预防性设计</a></li>
+<li class="chapter" data-level="19.5.9" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-debug-try"><i class="fa fa-check"></i><b>19.5.9</b> 出错处理机制</a></li>
+</ul></li>
+<li class="chapter" data-level="19.6" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-funcprog"><i class="fa fa-check"></i><b>19.6</b> 函数式编程介绍</a><ul>
+<li class="chapter" data-level="19.6.1" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-pure"><i class="fa fa-check"></i><b>19.6.1</b> 纯函数</a></li>
+<li class="chapter" data-level="19.6.2" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-rec"><i class="fa fa-check"></i><b>19.6.2</b> 副作用和运行环境恢复</a></li>
+<li class="chapter" data-level="19.6.3" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-rsupp"><i class="fa fa-check"></i><b>19.6.3</b> R的函数式编程功能</a></li>
+</ul></li>
+<li class="chapter" data-level="19.7" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-functional"><i class="fa fa-check"></i><b>19.7</b> 泛函</a><ul>
+<li class="chapter" data-level="19.7.1" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-fnctnl-map"><i class="fa fa-check"></i><b>19.7.1</b> <code>purrr::map</code>函数</a></li>
+<li class="chapter" data-level="19.7.2" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-fnctnl-mapv"><i class="fa fa-check"></i><b>19.7.2</b> purrr包中<code>map</code>函数的变种</a></li>
+<li class="chapter" data-level="19.7.3" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-fnctnl-reduce"><i class="fa fa-check"></i><b>19.7.3</b> purrr包中<code>reduce</code>类函数</a></li>
+<li class="chapter" data-level="19.7.4" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-fnctnl-pred"><i class="fa fa-check"></i><b>19.7.4</b> purrr包中使用示性函数的泛函</a></li>
+<li class="chapter" data-level="19.7.5" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-fnctnl-lapp"><i class="fa fa-check"></i><b>19.7.5</b> 基本R的函数式编程支持</a></li>
+<li class="chapter" data-level="19.7.6" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-fnctnl-udef"><i class="fa fa-check"></i><b>19.7.6</b> 自定义泛函</a></li>
+</ul></li>
+<li class="chapter" data-level="19.8" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-factory"><i class="fa fa-check"></i><b>19.8</b> 函数工厂</a><ul>
+<li class="chapter" data-level="19.8.1" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-factory-clex"><i class="fa fa-check"></i><b>19.8.1</b> 闭包例子</a></li>
+<li class="chapter" data-level="19.8.2" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-factory-lazy"><i class="fa fa-check"></i><b>19.8.2</b> 动态查找和懒惰求值引起的问题</a></li>
+<li class="chapter" data-level="19.8.3" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-factory-mem"><i class="fa fa-check"></i><b>19.8.3</b> 函数工厂的内存负担</a></li>
+<li class="chapter" data-level="19.8.4" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-operator"><i class="fa fa-check"></i><b>19.8.4</b> 函数算子</a></li>
+</ul></li>
+<li class="chapter" data-level="19.9" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-env"><i class="fa fa-check"></i><b>19.9</b> 环境</a><ul>
+<li class="chapter" data-level="19.9.1" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-env-def"><i class="fa fa-check"></i><b>19.9.1</b> 基本概念</a></li>
+<li class="chapter" data-level="19.9.2" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-env-recurs"><i class="fa fa-check"></i><b>19.9.2</b> 逐层向上访问环境</a></li>
+<li class="chapter" data-level="19.9.3" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-env-spec"><i class="fa fa-check"></i><b>19.9.3</b> 特殊环境</a></li>
+<li class="chapter" data-level="19.9.4" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-env-callst"><i class="fa fa-check"></i><b>19.9.4</b> 调用栈</a></li>
+<li class="chapter" data-level="19.9.5" data-path="p-advfunc.html"><a href="p-advfunc.html#p-advfunc-env-usedt"><i class="fa fa-check"></i><b>19.9.5</b> 将环境用作一般数据结构</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV 制作研究报告和图书</b></span></li>
+<li class="chapter" data-level="20" data-path="knitr.html"><a href="knitr.html"><i class="fa fa-check"></i><b>20</b> 用R制作研究报告</a></li>
+<li class="chapter" data-level="21" data-path="markdown.html"><a href="markdown.html"><i class="fa fa-check"></i><b>21</b> Markdown格式</a><ul>
+<li class="chapter" data-level="21.1" data-path="markdown.html"><a href="markdown.html#markdown-intro"><i class="fa fa-check"></i><b>21.1</b> 介绍</a></li>
+<li class="chapter" data-level="21.2" data-path="markdown.html"><a href="markdown.html#markdown-app"><i class="fa fa-check"></i><b>21.2</b> Markdown格式文件的应用</a></li>
+<li class="chapter" data-level="21.3" data-path="markdown.html"><a href="markdown.html#markdown-format"><i class="fa fa-check"></i><b>21.3</b> markdown格式说明</a><ul>
+<li class="chapter" data-level="21.3.1" data-path="markdown.html"><a href="markdown.html#markdown-format-intro"><i class="fa fa-check"></i><b>21.3.1</b> 概述</a></li>
+<li class="chapter" data-level="21.3.2" data-path="markdown.html"><a href="markdown.html#markdown-format-paragraph"><i class="fa fa-check"></i><b>21.3.2</b> 段落</a></li>
+<li class="chapter" data-level="21.3.3" data-path="markdown.html"><a href="markdown.html#markdown-format-inline"><i class="fa fa-check"></i><b>21.3.3</b> 段内文字格式</a></li>
+<li class="chapter" data-level="21.3.4" data-path="markdown.html"><a href="markdown.html#markdown-format-header"><i class="fa fa-check"></i><b>21.3.4</b> 标题和分隔线</a></li>
+<li class="chapter" data-level="21.3.5" data-path="markdown.html"><a href="markdown.html#markdown-format-cite"><i class="fa fa-check"></i><b>21.3.5</b> 引用段落</a></li>
+<li class="chapter" data-level="21.3.6" data-path="markdown.html"><a href="markdown.html#markdown-format-list"><i class="fa fa-check"></i><b>21.3.6</b> 列表</a></li>
+<li class="chapter" data-level="21.3.7" data-path="markdown.html"><a href="markdown.html#markdown-format-code"><i class="fa fa-check"></i><b>21.3.7</b> 源程序</a></li>
+<li class="chapter" data-level="21.3.8" data-path="markdown.html"><a href="markdown.html#markdown-format-link"><i class="fa fa-check"></i><b>21.3.8</b> 链接</a></li>
+<li class="chapter" data-level="21.3.9" data-path="markdown.html"><a href="markdown.html#markdown-format-fig"><i class="fa fa-check"></i><b>21.3.9</b> 插入图形</a></li>
+<li class="chapter" data-level="21.3.10" data-path="markdown.html"><a href="markdown.html#markdown-format-table"><i class="fa fa-check"></i><b>21.3.10</b> 表格</a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="markdown.html"><a href="markdown.html#markdown-pandoc"><i class="fa fa-check"></i><b>21.4</b> 附录：pandoc软件介绍</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>22</b> R Markdown文件格式</a><ul>
+<li class="chapter" data-level="22.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-intro"><i class="fa fa-check"></i><b>22.1</b> R Markdown文件</a></li>
+<li class="chapter" data-level="22.2" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-compile"><i class="fa fa-check"></i><b>22.2</b> R Markdown文件的编译</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-compile-proc"><i class="fa fa-check"></i><b>22.2.1</b> 编译的实际过程</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-rcode"><i class="fa fa-check"></i><b>22.3</b> 在R Markdown文件中插入R代码</a></li>
+<li class="chapter" data-level="22.4" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-kable"><i class="fa fa-check"></i><b>22.4</b> 输出表格</a></li>
+<li class="chapter" data-level="22.5" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-graph"><i class="fa fa-check"></i><b>22.5</b> 利用R程序插图</a></li>
+<li class="chapter" data-level="22.6" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-rcode-opt"><i class="fa fa-check"></i><b>22.6</b> 代码段选项</a><ul>
+<li class="chapter" data-level="22.6.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-rcode-outformat"><i class="fa fa-check"></i><b>22.6.1</b> 代码和文本输出结果格式</a></li>
+<li class="chapter" data-level="22.6.2" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-rcode-figopt"><i class="fa fa-check"></i><b>22.6.2</b> 图形选项</a></li>
+<li class="chapter" data-level="22.6.3" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-rcode-cache"><i class="fa fa-check"></i><b>22.6.3</b> 缓存(cache)选项</a></li>
+</ul></li>
+<li class="chapter" data-level="22.7" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd--sectionlink"><i class="fa fa-check"></i><b>22.7</b> 章节目录链接问题</a></li>
+<li class="chapter" data-level="22.8" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-formula"><i class="fa fa-check"></i><b>22.8</b> 数学公式</a><ul>
+<li class="chapter" data-level="22.8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-formula-intro"><i class="fa fa-check"></i><b>22.8.1</b> 在Markdown中输入数学公式</a></li>
+<li class="chapter" data-level="22.8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-formula-type"><i class="fa fa-check"></i><b>22.8.2</b> 数学公式类别</a></li>
+<li class="chapter" data-level="22.8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-formula-basic"><i class="fa fa-check"></i><b>22.8.3</b> 基本功能</a></li>
+<li class="chapter" data-level="22.8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-formula-accent"><i class="fa fa-check"></i><b>22.8.4</b> 修饰符</a></li>
+<li class="chapter" data-level="22.8.5" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-formula-align"><i class="fa fa-check"></i><b>22.8.5</b> 对齐与矩阵</a></li>
+<li class="chapter" data-level="22.8.6" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-formula-fonts"><i class="fa fa-check"></i><b>22.8.6</b> 特殊字体</a></li>
+</ul></li>
+<li class="chapter" data-level="22.9" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-engines"><i class="fa fa-check"></i><b>22.9</b> 其它编程语言引擎</a></li>
+<li class="chapter" data-level="22.10" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-interact"><i class="fa fa-check"></i><b>22.10</b> 交互内容</a></li>
+<li class="chapter" data-level="22.11" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown-attryaml"><i class="fa fa-check"></i><b>22.11</b> 属性设置</a><ul>
+<li class="chapter" data-level="22.11.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown-yaml"><i class="fa fa-check"></i><b>22.11.1</b> YAML元数据</a></li>
+<li class="chapter" data-level="22.11.2" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-output-types"><i class="fa fa-check"></i><b>22.11.2</b> 输出格式</a></li>
+<li class="chapter" data-level="22.11.3" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-output-attr"><i class="fa fa-check"></i><b>22.11.3</b> 输出格式设置</a></li>
+<li class="chapter" data-level="22.11.4" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-output-attr-toc"><i class="fa fa-check"></i><b>22.11.4</b> 目录设置</a></li>
+<li class="chapter" data-level="22.11.5" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-output-attr-numsec"><i class="fa fa-check"></i><b>22.11.5</b> 章节自动编号</a></li>
+<li class="chapter" data-level="22.11.6" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-output-attr-wordnumsec"><i class="fa fa-check"></i><b>22.11.6</b> Word输出章节自动编号及模板功能</a></li>
+<li class="chapter" data-level="22.11.7" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-output-htmlspecific"><i class="fa fa-check"></i><b>22.11.7</b> HTML特有输出格式设置</a></li>
+<li class="chapter" data-level="22.11.8" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-mathjax"><i class="fa fa-check"></i><b>22.11.8</b> 关于数学公式支持的设置</a></li>
+<li class="chapter" data-level="22.11.9" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-output-yml"><i class="fa fa-check"></i><b>22.11.9</b> 输出设置文件</a></li>
+</ul></li>
+<li class="chapter" data-level="22.12" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-latex"><i class="fa fa-check"></i><b>22.12</b> LaTeX和PDF输出</a><ul>
+<li class="chapter" data-level="22.12.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-latex-tinytex"><i class="fa fa-check"></i><b>22.12.1</b> TinyTex的安装使用</a></li>
+<li class="chapter" data-level="22.12.2" data-path="rmarkdown.html"><a href="rmarkdown.html#rmd-latex-yaml"><i class="fa fa-check"></i><b>22.12.2</b> Rmd中Latex设置</a></li>
+</ul></li>
+<li class="chapter" data-level="22.13" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown-rticles"><i class="fa fa-check"></i><b>22.13</b> 生成期刊文章</a></li>
+<li class="chapter" data-level="22.14" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown-app1"><i class="fa fa-check"></i><b>22.14</b> 附录：经验与问题</a><ul>
+<li class="chapter" data-level="22.14.1" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown-app1-wordtemplate"><i class="fa fa-check"></i><b>22.14.1</b> Word模板制作</a></li>
+<li class="chapter" data-level="22.14.2" data-path="rmarkdown.html"><a href="rmarkdown.html#rmarkdown-app1-math"><i class="fa fa-check"></i><b>22.14.2</b> 数学公式设置补充</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>23</b> 用bookdown制作图书</a><ul>
+<li class="chapter" data-level="23.1" data-path="bookdown.html"><a href="bookdown.html#bookdown-intro"><i class="fa fa-check"></i><b>23.1</b> 介绍</a></li>
+<li class="chapter" data-level="23.2" data-path="bookdown.html"><a href="bookdown.html#bookdown-settings"><i class="fa fa-check"></i><b>23.2</b> 一本书的设置</a></li>
+<li class="chapter" data-level="23.3" data-path="bookdown.html"><a href="bookdown.html#bookdown-sectioning"><i class="fa fa-check"></i><b>23.3</b> 章节结构</a></li>
+<li class="chapter" data-level="23.4" data-path="bookdown.html"><a href="bookdown.html#bookdown-compile"><i class="fa fa-check"></i><b>23.4</b> 书的编译</a></li>
+<li class="chapter" data-level="23.5" data-path="bookdown.html"><a href="bookdown.html#bookdown-cref"><i class="fa fa-check"></i><b>23.5</b> 交叉引用</a></li>
+<li class="chapter" data-level="23.6" data-path="bookdown.html"><a href="bookdown.html#bookdown-formula"><i class="fa fa-check"></i><b>23.6</b> 数学公式和公式编号</a></li>
+<li class="chapter" data-level="23.7" data-path="bookdown.html"><a href="bookdown.html#bookdown-theorem"><i class="fa fa-check"></i><b>23.7</b> 定理类编号</a></li>
+<li class="chapter" data-level="23.8" data-path="bookdown.html"><a href="bookdown.html#bookdown-bib"><i class="fa fa-check"></i><b>23.8</b> 文献引用</a></li>
+<li class="chapter" data-level="23.9" data-path="bookdown.html"><a href="bookdown.html#bookdown-graph"><i class="fa fa-check"></i><b>23.9</b> 插图</a></li>
+<li class="chapter" data-level="23.10" data-path="bookdown.html"><a href="bookdown.html#bookdown-table"><i class="fa fa-check"></i><b>23.10</b> 表格</a><ul>
+<li class="chapter" data-level="23.10.1" data-path="bookdown.html"><a href="bookdown.html#bookdown-table-md"><i class="fa fa-check"></i><b>23.10.1</b> Markdown表格</a></li>
+<li class="chapter" data-level="23.10.2" data-path="bookdown.html"><a href="bookdown.html#bookdown-table-kable"><i class="fa fa-check"></i><b>23.10.2</b> 用<code>kable()</code>函数制作表格</a></li>
+<li class="chapter" data-level="23.10.3" data-path="bookdown.html"><a href="bookdown.html#bookdown-table-kable"><i class="fa fa-check"></i><b>23.10.3</b> R中其它制作表格的包</a></li>
+</ul></li>
+<li class="chapter" data-level="23.11" data-path="bookdown.html"><a href="bookdown.html#bookdown-mathjax"><i class="fa fa-check"></i><b>23.11</b> 数学公式的设置</a></li>
+<li class="chapter" data-level="23.12" data-path="bookdown.html"><a href="bookdown.html#bookdown-exp"><i class="fa fa-check"></i><b>23.12</b> 使用经验</a></li>
+<li class="chapter" data-level="23.13" data-path="bookdown.html"><a href="bookdown.html#bookdown-bugs"><i class="fa fa-check"></i><b>23.13</b> bookdown的一些使用问题</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="rmdsite.html"><a href="rmdsite.html"><i class="fa fa-check"></i><b>24</b> 用R Markdown制作简易网站</a><ul>
+<li class="chapter" data-level="24.1" data-path="rmdsite.html"><a href="rmdsite.html#rmdsite-intro"><i class="fa fa-check"></i><b>24.1</b> 介绍</a></li>
+<li class="chapter" data-level="24.2" data-path="rmdsite.html"><a href="rmdsite.html#rmdsite-rmarkdown"><i class="fa fa-check"></i><b>24.2</b> 简易网站制作</a><ul>
+<li class="chapter" data-level="24.2.1" data-path="rmdsite.html"><a href="rmdsite.html#rmdsite-rmarkdown-struct"><i class="fa fa-check"></i><b>24.2.1</b> 网站结构</a></li>
+<li class="chapter" data-level="24.2.2" data-path="rmdsite.html"><a href="rmdsite.html#rmdsite-rmarkdown-build"><i class="fa fa-check"></i><b>24.2.2</b> 编译</a></li>
+<li class="chapter" data-level="24.2.3" data-path="rmdsite.html"><a href="rmdsite.html#rmdsite-rmarkdown-pages"><i class="fa fa-check"></i><b>24.2.3</b> 内容文件</a></li>
+<li class="chapter" data-level="24.2.4" data-path="rmdsite.html"><a href="rmdsite.html#rmdsite-rmarkdown-config"><i class="fa fa-check"></i><b>24.2.4</b> 网站设置</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="rmdsite.html"><a href="rmdsite.html#blogdown"><i class="fa fa-check"></i><b>24.3</b> 用blogdown制作网站</a><ul>
+<li class="chapter" data-level="24.3.1" data-path="rmdsite.html"><a href="rmdsite.html#blogd-new"><i class="fa fa-check"></i><b>24.3.1</b> 生成新网站的框架</a></li>
+<li class="chapter" data-level="24.3.2" data-path="rmdsite.html"><a href="rmdsite.html#blogd-page"><i class="fa fa-check"></i><b>24.3.2</b> 网页内容文件及其设置</a></li>
+<li class="chapter" data-level="24.3.3" data-path="rmdsite.html"><a href="rmdsite.html#blogd-workflow"><i class="fa fa-check"></i><b>24.3.3</b> 初学者的工作流程</a></li>
+<li class="chapter" data-level="24.3.4" data-path="rmdsite.html"><a href="rmdsite.html#blogd-config"><i class="fa fa-check"></i><b>24.3.4</b> 网站设置文件</a></li>
+<li class="chapter" data-level="24.3.5" data-path="rmdsite.html"><a href="rmdsite.html#blogd-static"><i class="fa fa-check"></i><b>24.3.5</b> 静态文件</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="slides.html"><a href="slides.html"><i class="fa fa-check"></i><b>25</b> 制作幻灯片</a><ul>
+<li class="chapter" data-level="25.1" data-path="slides.html"><a href="slides.html#rmd-slides-intro"><i class="fa fa-check"></i><b>25.1</b> 介绍</a></li>
+<li class="chapter" data-level="25.2" data-path="slides.html"><a href="slides.html#rmd-slidy"><i class="fa fa-check"></i><b>25.2</b> Slidy幻灯片</a><ul>
+<li class="chapter" data-level="25.2.1" data-path="slides.html"><a href="slides.html#rmd-slidy-format"><i class="fa fa-check"></i><b>25.2.1</b> 文件格式</a></li>
+<li class="chapter" data-level="25.2.2" data-path="slides.html"><a href="slides.html#rmd-slidy-compile"><i class="fa fa-check"></i><b>25.2.2</b> 幻灯片编译</a></li>
+<li class="chapter" data-level="25.2.3" data-path="slides.html"><a href="slides.html#rmd-slidy-play"><i class="fa fa-check"></i><b>25.2.3</b> 播放控制</a></li>
+<li class="chapter" data-level="25.2.4" data-path="slides.html"><a href="slides.html#rmd-slidy-handout"><i class="fa fa-check"></i><b>25.2.4</b> 生成单页HTML</a></li>
+<li class="chapter" data-level="25.2.5" data-path="slides.html"><a href="slides.html#rmd-slidy-mathjax"><i class="fa fa-check"></i><b>25.2.5</b> 数学公式处理与输出设置文件</a></li>
+<li class="chapter" data-level="25.2.6" data-path="slides.html"><a href="slides.html#rmd-slidy-options"><i class="fa fa-check"></i><b>25.2.6</b> 其它选项</a></li>
+<li class="chapter" data-level="25.2.7" data-path="slides.html"><a href="slides.html#rmd-slidy-laser"><i class="fa fa-check"></i><b>25.2.7</b> slidy幻灯片激光笔失效问题的修改</a></li>
+</ul></li>
+<li class="chapter" data-level="25.3" data-path="slides.html"><a href="slides.html#rmdslides-pp"><i class="fa fa-check"></i><b>25.3</b> MS PowerPoint幻灯片</a></li>
+<li class="chapter" data-level="25.4" data-path="slides.html"><a href="slides.html#rmdslides-beamer"><i class="fa fa-check"></i><b>25.4</b> Bearmer幻灯片格式</a></li>
+<li class="chapter" data-level="25.5" data-path="slides.html"><a href="slides.html#rmdslides-rpres"><i class="fa fa-check"></i><b>25.5</b> R Presentation格式</a></li>
+</ul></li>
+<li class="part"><span><b>V 数据整理与汇总</b></span></li>
+<li class="chapter" data-level="26" data-path="summary-manip.html"><a href="summary-manip.html"><i class="fa fa-check"></i><b>26</b> 数据整理</a><ul>
+<li class="chapter" data-level="26.1" data-path="summary-manip.html"><a href="summary-manip.html#summm-tidyv"><i class="fa fa-check"></i><b>26.1</b> tidyverse系统</a></li>
+<li class="chapter" data-level="26.2" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-filter"><i class="fa fa-check"></i><b>26.2</b> 用<code>filter()</code>选择行子集</a></li>
+<li class="chapter" data-level="26.3" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-head"><i class="fa fa-check"></i><b>26.3</b> 按行序号选择行子集</a></li>
+<li class="chapter" data-level="26.4" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-samplen"><i class="fa fa-check"></i><b>26.4</b> 用<code>sample_n()</code>对观测随机抽样</a></li>
+<li class="chapter" data-level="26.5" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-distinct"><i class="fa fa-check"></i><b>26.5</b> 用<code>distinct()</code>去除重复行</a></li>
+<li class="chapter" data-level="26.6" data-path="summary-manip.html"><a href="summary-manip.html#tidyr-dropna"><i class="fa fa-check"></i><b>26.6</b> 用<code>drop_na()</code>去除指定的变量有缺失值的行</a></li>
+<li class="chapter" data-level="26.7" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-select"><i class="fa fa-check"></i><b>26.7</b> 用<code>select()</code>选择列子集</a></li>
+<li class="chapter" data-level="26.8" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-pull"><i class="fa fa-check"></i><b>26.8</b> 取出单个变量为向量</a></li>
+<li class="chapter" data-level="26.9" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-arrange"><i class="fa fa-check"></i><b>26.9</b> 用<code>arrange()</code>排序</a></li>
+<li class="chapter" data-level="26.10" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-rename"><i class="fa fa-check"></i><b>26.10</b> 用<code>rename()</code>修改变量名</a></li>
+<li class="chapter" data-level="26.11" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-mutate"><i class="fa fa-check"></i><b>26.11</b> 用<code>mutate()</code>计算新变量</a></li>
+<li class="chapter" data-level="26.12" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-transmute"><i class="fa fa-check"></i><b>26.12</b> 用<code>tranmute()</code>生成新变量的数据框</a></li>
+<li class="chapter" data-level="26.13" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-pipe"><i class="fa fa-check"></i><b>26.13</b> 用管道连接多次操作</a></li>
+<li class="chapter" data-level="26.14" data-path="summary-manip.html"><a href="summary-manip.html#tidyr-longer"><i class="fa fa-check"></i><b>26.14</b> 宽表转换为长表</a><ul>
+<li class="chapter" data-level="26.14.1" data-path="summary-manip.html"><a href="summary-manip.html#tidyr-longer-pl"><i class="fa fa-check"></i><b>26.14.1</b> <code>pivot_longer</code>函数</a></li>
+<li class="chapter" data-level="26.14.2" data-path="summary-manip.html"><a href="summary-manip.html#tidyr-longer-prefixvalue"><i class="fa fa-check"></i><b>26.14.2</b> 从列名中提取数值</a></li>
+<li class="chapter" data-level="26.14.3" data-path="summary-manip.html"><a href="summary-manip.html#tidyr-longer-colnamemultclassv"><i class="fa fa-check"></i><b>26.14.3</b> 从列名中提取多个分类变量值</a></li>
+<li class="chapter" data-level="26.14.4" data-path="summary-manip.html"><a href="summary-manip.html#tidyr-longer-multvarsmultclassv"><i class="fa fa-check"></i><b>26.14.4</b> 一行中有多个属性的多次观测的情形</a></li>
+</ul></li>
+<li class="chapter" data-level="26.15" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-wider"><i class="fa fa-check"></i><b>26.15</b> 长表转换为宽表</a><ul>
+<li class="chapter" data-level="26.15.1" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-wider-sepvars"><i class="fa fa-check"></i><b>26.15.1</b> 将多个混在一起的变量拆开</a></li>
+<li class="chapter" data-level="26.15.2" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-wider-combtimes"><i class="fa fa-check"></i><b>26.15.2</b> 将多个类别合并到一个观测</a></li>
+<li class="chapter" data-level="26.15.3" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-wider-combcross"><i class="fa fa-check"></i><b>26.15.3</b> 将交叉类别合并到一个观测</a></li>
+<li class="chapter" data-level="26.15.4" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-wider-mvmest"><i class="fa fa-check"></i><b>26.15.4</b> 多个变量的多种值</a></li>
+<li class="chapter" data-level="26.15.5" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-wider-mixed"><i class="fa fa-check"></i><b>26.15.5</b> 长宽转换混合使用</a></li>
+</ul></li>
+<li class="chapter" data-level="26.16" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-spearate"><i class="fa fa-check"></i><b>26.16</b> 拆分数据列</a></li>
+<li class="chapter" data-level="26.17" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-unite"><i class="fa fa-check"></i><b>26.17</b> 合并数据列</a></li>
+<li class="chapter" data-level="26.18" data-path="summary-manip.html"><a href="summary-manip.html#summ-trans-combv"><i class="fa fa-check"></i><b>26.18</b> 数据框纵向合并</a></li>
+<li class="chapter" data-level="26.19" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-join"><i class="fa fa-check"></i><b>26.19</b> 横向合并</a></li>
+<li class="chapter" data-level="26.20" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-semi"><i class="fa fa-check"></i><b>26.20</b> 利用第二个数据集筛选</a></li>
+<li class="chapter" data-level="26.21" data-path="summary-manip.html"><a href="summary-manip.html#dplyr-set"><i class="fa fa-check"></i><b>26.21</b> 数据集的集合操作</a></li>
+<li class="chapter" data-level="26.22" data-path="summary-manip.html"><a href="summary-manip.html#summ-trans-standard"><i class="fa fa-check"></i><b>26.22</b> 标准化</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="summary-summ.html"><a href="summary-summ.html"><i class="fa fa-check"></i><b>27</b> 数据汇总</a><ul>
+<li class="chapter" data-level="27.1" data-path="summary-summ.html"><a href="summary-summ.html#dplyr-summ"><i class="fa fa-check"></i><b>27.1</b> 用dplyr作数据汇总</a></li>
+<li class="chapter" data-level="27.2" data-path="summary-summ.html"><a href="summary-summ.html#dplyr-summat"><i class="fa fa-check"></i><b>27.2</b> 多个变量的汇总</a></li>
+<li class="chapter" data-level="27.3" data-path="summary-summ.html"><a href="summary-summ.html#dplyr-groupby"><i class="fa fa-check"></i><b>27.3</b> 用dplyr作数据分组汇总</a></li>
+<li class="chapter" data-level="27.4" data-path="summary-summ.html"><a href="summary-summ.html#dplyr-crossgroup"><i class="fa fa-check"></i><b>27.4</b> 交叉分类的汇总</a></li>
+<li class="chapter" data-level="27.5" data-path="summary-summ.html"><a href="summary-summ.html#summ-nest"><i class="fa fa-check"></i><b>27.5</b> tibble中的列表列</a><ul>
+<li class="chapter" data-level="27.5.1" data-path="summary-summ.html"><a href="summary-summ.html#summ-nest-intro"><i class="fa fa-check"></i><b>27.5.1</b> <code>nest</code>和<code>unnest</code></a></li>
+<li class="chapter" data-level="27.5.2" data-path="summary-summ.html"><a href="summary-summ.html#summ-nest-groupby"><i class="fa fa-check"></i><b>27.5.2</b> <code>group_by</code>与<code>nest</code>配合</a></li>
+<li class="chapter" data-level="27.5.3" data-path="summary-summ.html"><a href="summary-summ.html#summ-nest-summarise"><i class="fa fa-check"></i><b>27.5.3</b> <code>summarise</code>统计量用列表表示</a></li>
+<li class="chapter" data-level="27.5.4" data-path="summary-summ.html"><a href="summary-summ.html#summ-nest-unnest-grammar"><i class="fa fa-check"></i><b>27.5.4</b> <code>unnest</code>的语法格式</a></li>
+<li class="chapter" data-level="27.5.5" data-path="summary-summ.html"><a href="summary-summ.html#summ-nest-direct"><i class="fa fa-check"></i><b>27.5.5</b> 直接生成列表类型的列</a></li>
+</ul></li>
+<li class="chapter" data-level="27.6" data-path="summary-summ.html"><a href="summary-summ.html#summ-base"><i class="fa fa-check"></i><b>27.6</b> 基本R的汇总功能</a><ul>
+<li class="chapter" data-level="27.6.1" data-path="summary-summ.html"><a href="summary-summ.html#summ-base-summary"><i class="fa fa-check"></i><b>27.6.1</b> <code>summary()</code>函数</a></li>
+<li class="chapter" data-level="27.6.2" data-path="summary-summ.html"><a href="summary-summ.html#summ-cont"><i class="fa fa-check"></i><b>27.6.2</b> 连续型变量概括函数</a></li>
+<li class="chapter" data-level="27.6.3" data-path="summary-summ.html"><a href="summary-summ.html#summ-fact"><i class="fa fa-check"></i><b>27.6.3</b> 分类变量概括</a></li>
+<li class="chapter" data-level="27.6.4" data-path="summary-summ.html"><a href="summary-summ.html#summ-df"><i class="fa fa-check"></i><b>27.6.4</b> 数据框概括</a></li>
+</ul></li>
+<li class="chapter" data-level="27.7" data-path="summary-summ.html"><a href="summary-summ.html#summ-by"><i class="fa fa-check"></i><b>27.7</b> 用基本R作分类概括</a><ul>
+<li class="chapter" data-level="27.7.1" data-path="summary-summ.html"><a href="summary-summ.html#summ-by-tapply"><i class="fa fa-check"></i><b>27.7.1</b> 用<code>tapply()</code>分组概括向量</a></li>
+<li class="chapter" data-level="27.7.2" data-path="summary-summ.html"><a href="summary-summ.html#summ-by-aggregate"><i class="fa fa-check"></i><b>27.7.2</b> 用<code>aggregate()</code>分组概括数据框</a></li>
+<li class="chapter" data-level="27.7.3" data-path="summary-summ.html"><a href="summary-summ.html#summ-by-split"><i class="fa fa-check"></i><b>27.7.3</b> 用<code>split()</code>函数分组后概括</a></li>
+</ul></li>
+<li class="chapter" data-level="27.8" data-path="summary-summ.html"><a href="summary-summ.html#summ-by-plyr"><i class="fa fa-check"></i><b>27.8</b> 用plyr包进行分类概括</a></li>
+<li class="chapter" data-level="27.9" data-path="summary-summ.html"><a href="summary-summ.html#summ-by-exer"><i class="fa fa-check"></i><b>27.9</b> 练习</a></li>
+</ul></li>
+<li class="part"><span><b>VI 绘图</b></span></li>
+<li class="chapter" data-level="28" data-path="graph.html"><a href="graph.html"><i class="fa fa-check"></i><b>28</b> 基本R绘图</a><ul>
+<li class="chapter" data-level="28.1" data-path="graph.html"><a href="graph.html#graph-ph"><i class="fa fa-check"></i><b>28.1</b> 常用高级图形</a><ul>
+<li class="chapter" data-level="28.1.1" data-path="graph.html"><a href="graph.html#graph-ph-barplot"><i class="fa fa-check"></i><b>28.1.1</b> 条形图</a></li>
+<li class="chapter" data-level="28.1.2" data-path="graph.html"><a href="graph.html#graph-ph-hist"><i class="fa fa-check"></i><b>28.1.2</b> 直方图和密度估计图</a></li>
+<li class="chapter" data-level="28.1.3" data-path="graph.html"><a href="graph.html#graph-ph-boxplot"><i class="fa fa-check"></i><b>28.1.3</b> 盒形图</a></li>
+<li class="chapter" data-level="28.1.4" data-path="graph.html"><a href="graph.html#graph-pr-qq"><i class="fa fa-check"></i><b>28.1.4</b> 正态QQ图</a></li>
+<li class="chapter" data-level="28.1.5" data-path="graph.html"><a href="graph.html#graph-ph-plot"><i class="fa fa-check"></i><b>28.1.5</b> 散点图</a></li>
+<li class="chapter" data-level="28.1.6" data-path="graph.html"><a href="graph.html#graph-ph-curve"><i class="fa fa-check"></i><b>28.1.6</b> 曲线图</a></li>
+<li class="chapter" data-level="28.1.7" data-path="graph.html"><a href="graph.html#graph-ph-3d"><i class="fa fa-check"></i><b>28.1.7</b> 三维图</a></li>
+<li class="chapter" data-level="28.1.8" data-path="graph.html"><a href="graph.html#graph-ph-rgl"><i class="fa fa-check"></i><b>28.1.8</b> 动态三维图</a></li>
+</ul></li>
+<li class="chapter" data-level="28.2" data-path="graph.html"><a href="graph.html#graph-pl"><i class="fa fa-check"></i><b>28.2</b> 低级图形函数</a><ul>
+<li class="chapter" data-level="28.2.1" data-path="graph.html"><a href="graph.html#graph-pl-abline"><i class="fa fa-check"></i><b>28.2.1</b> <code>abline()</code></a></li>
+<li class="chapter" data-level="28.2.2" data-path="graph.html"><a href="graph.html#graph-pl-points"><i class="fa fa-check"></i><b>28.2.2</b> <code>points()</code></a></li>
+<li class="chapter" data-level="28.2.3" data-path="graph.html"><a href="graph.html#graph-pl-lines"><i class="fa fa-check"></i><b>28.2.3</b> <code>lines()</code></a></li>
+<li class="chapter" data-level="28.2.4" data-path="graph.html"><a href="graph.html#graph-pl-legend"><i class="fa fa-check"></i><b>28.2.4</b> 图例</a></li>
+<li class="chapter" data-level="28.2.5" data-path="graph.html"><a href="graph.html#graph-pl-axis"><i class="fa fa-check"></i><b>28.2.5</b> <code>axis()</code></a></li>
+<li class="chapter" data-level="28.2.6" data-path="graph.html"><a href="graph.html#graph-pl-text"><i class="fa fa-check"></i><b>28.2.6</b> <code>text()</code></a></li>
+<li class="chapter" data-level="28.2.7" data-path="graph.html"><a href="graph.html#graph-pl-locator"><i class="fa fa-check"></i><b>28.2.7</b> <code>locator()</code>和<code>identify()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="28.3" data-path="graph.html"><a href="graph.html#graph-par"><i class="fa fa-check"></i><b>28.3</b> 图形参数</a><ul>
+<li class="chapter" data-level="28.3.1" data-path="graph.html"><a href="graph.html#graph-par-ex1"><i class="fa fa-check"></i><b>28.3.1</b> 例子：用图形参数解决barplot图形横坐标值过宽</a></li>
+<li class="chapter" data-level="28.3.2" data-path="graph.html"><a href="graph.html#graph-par-elem"><i class="fa fa-check"></i><b>28.3.2</b> 图形元素控制</a></li>
+<li class="chapter" data-level="28.3.3" data-path="graph.html"><a href="graph.html#graph-par-axis"><i class="fa fa-check"></i><b>28.3.3</b> 坐标轴与坐标刻度</a></li>
+<li class="chapter" data-level="28.3.4" data-path="graph.html"><a href="graph.html#graph-par-mar"><i class="fa fa-check"></i><b>28.3.4</b> 图形边空</a></li>
+<li class="chapter" data-level="28.3.5" data-path="graph.html"><a href="graph.html#graph-par-mfrow"><i class="fa fa-check"></i><b>28.3.5</b> 一页多图</a></li>
+</ul></li>
+<li class="chapter" data-level="28.4" data-path="graph.html"><a href="graph.html#graph-pout"><i class="fa fa-check"></i><b>28.4</b> 图形输出</a><ul>
+<li class="chapter" data-level="28.4.1" data-path="graph.html"><a href="graph.html#graph-pout-pdf"><i class="fa fa-check"></i><b>28.4.1</b> PDF 输出</a></li>
+<li class="chapter" data-level="28.4.2" data-path="graph.html"><a href="graph.html#graph-pout-png"><i class="fa fa-check"></i><b>28.4.2</b> PNG输出</a></li>
+</ul></li>
+<li class="chapter" data-level="28.5" data-path="graph.html"><a href="graph.html#graph-pzhn"><i class="fa fa-check"></i><b>28.5</b> 包含多种中文字体的图形</a></li>
+<li class="chapter" data-level="28.6" data-path="graph.html"><a href="graph.html#graph-other"><i class="fa fa-check"></i><b>28.6</b> 其它图形</a><ul>
+<li class="chapter" data-level="28.6.1" data-path="graph.html"><a href="graph.html#graph-other-corr"><i class="fa fa-check"></i><b>28.6.1</b> 相关系数图</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>29</b> ggplot作图入门</a><ul>
+<li class="chapter" data-level="29.1" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-intro"><i class="fa fa-check"></i><b>29.1</b> 介绍</a></li>
+<li class="chapter" data-level="29.2" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-principles"><i class="fa fa-check"></i><b>29.2</b> 作图的一般原则</a></li>
+<li class="chapter" data-level="29.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-point"><i class="fa fa-check"></i><b>29.3</b> 散点图：ggplot入门</a><ul>
+<li class="chapter" data-level="29.3.1" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-point-base"><i class="fa fa-check"></i><b>29.3.1</b> 基本的散点图</a></li>
+<li class="chapter" data-level="29.3.2" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-point-layers"><i class="fa fa-check"></i><b>29.3.2</b> 逐步改善</a></li>
+<li class="chapter" data-level="29.3.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-point-otheraes"><i class="fa fa-check"></i><b>29.3.3</b> 颜色、符号、线型等映射</a></li>
+<li class="chapter" data-level="29.3.4" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-point-geomaes"><i class="fa fa-check"></i><b>29.3.4</b> 在geom函数中映射变量</a></li>
+<li class="chapter" data-level="29.3.5" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-point-contcolor"><i class="fa fa-check"></i><b>29.3.5</b> 连续变量的颜色映射</a></li>
+<li class="chapter" data-level="29.3.6" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-point-save"><i class="fa fa-check"></i><b>29.3.6</b> 保存图像</a></li>
+</ul></li>
+<li class="chapter" data-level="29.4" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-right"><i class="fa fa-check"></i><b>29.4</b> 折线图、分组、小图</a><ul>
+<li class="chapter" data-level="29.4.1" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-right-group"><i class="fa fa-check"></i><b>29.4.1</b> 图形中的分组和折线图</a></li>
+<li class="chapter" data-level="29.4.2" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-right-facet"><i class="fa fa-check"></i><b>29.4.2</b> 小图(facet)</a></li>
+</ul></li>
+<li class="chapter" data-level="29.5" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-bar-trans"><i class="fa fa-check"></i><b>29.5</b> 数据变换与条形图</a><ul>
+<li class="chapter" data-level="29.5.1" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-right-morebar"><i class="fa fa-check"></i><b>29.5.1</b> 分段与并列条形图</a></li>
+<li class="chapter" data-level="29.5.2" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-bar-morebar"><i class="fa fa-check"></i><b>29.5.2</b> 条形图的其它应用</a></li>
+</ul></li>
+<li class="chapter" data-level="29.6" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-hist"><i class="fa fa-check"></i><b>29.6</b> 直方图与密度估计</a></li>
+<li class="chapter" data-level="29.7" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-gramm"><i class="fa fa-check"></i><b>29.7</b> 绘图语法介绍</a><ul>
+<li class="chapter" data-level="29.7.1" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-gramm-gramm"><i class="fa fa-check"></i><b>29.7.1</b> 绘图语法</a></li>
+<li class="chapter" data-level="29.7.2" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-gramm-geoms"><i class="fa fa-check"></i><b>29.7.2</b> 图形种类</a></li>
+</ul></li>
+<li class="chapter" data-level="29.8" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-moregeom"><i class="fa fa-check"></i><b>29.8</b> 更多图形种类</a><ul>
+<li class="chapter" data-level="29.8.1" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-moregeom-continuousvar"><i class="fa fa-check"></i><b>29.8.1</b> 连续变量的分组图形</a></li>
+<li class="chapter" data-level="29.8.2" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-moregeom-text"><i class="fa fa-check"></i><b>29.8.2</b> 坐标系中的文字</a></li>
+<li class="chapter" data-level="29.8.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-moregeom-textops"><i class="fa fa-check"></i><b>29.8.3</b> 文字选项</a></li>
+<li class="chapter" data-level="29.8.4" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-moregeom-outliers"><i class="fa fa-check"></i><b>29.8.4</b> 标出特殊点</a></li>
+</ul></li>
+<li class="chapter" data-level="29.9" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-auxfuncs-scale"><i class="fa fa-check"></i><b>29.9</b> 刻度(scale)</a></li>
+<li class="chapter" data-level="29.10" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-refine-color"><i class="fa fa-check"></i><b>29.10</b> 如何使用颜色</a><ul>
+<li class="chapter" data-level="29.10.1" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-refine-qual"><i class="fa fa-check"></i><b>29.10.1</b> 名义型变量的颜色</a></li>
+<li class="chapter" data-level="29.10.2" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-refine-tile"><i class="fa fa-check"></i><b>29.10.2</b> 色块图</a></li>
+<li class="chapter" data-level="29.10.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-refine-seq"><i class="fa fa-check"></i><b>29.10.3</b> 有序型变量的颜色</a></li>
+<li class="chapter" data-level="29.10.4" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-refine-div"><i class="fa fa-check"></i><b>29.10.4</b> 相异型变量的颜色</a></li>
+<li class="chapter" data-level="29.10.5" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-refine-num"><i class="fa fa-check"></i><b>29.10.5</b> 连续数值变量的颜色</a></li>
+</ul></li>
+<li class="chapter" data-level="29.11" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-auxfuncs"><i class="fa fa-check"></i><b>29.11</b> 标题、标注、指南、拼接</a><ul>
+<li class="chapter" data-level="29.11.1" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-auxfuncs-labs"><i class="fa fa-check"></i><b>29.11.1</b> 标题</a></li>
+<li class="chapter" data-level="29.11.2" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-auxfuncs-anno"><i class="fa fa-check"></i><b>29.11.2</b> 标注功能</a></li>
+<li class="chapter" data-level="29.11.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-auxfuncs-guides"><i class="fa fa-check"></i><b>29.11.3</b> 指南(guides)</a></li>
+<li class="chapter" data-level="29.11.4" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-auxfuncs-compfig"><i class="fa fa-check"></i><b>29.11.4</b> 拼接图形</a></li>
+</ul></li>
+<li class="chapter" data-level="29.12" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-refine"><i class="fa fa-check"></i><b>29.12</b> 图形定制调整</a><ul>
+<li class="chapter" data-level="29.12.1" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-refine-asasec"><i class="fa fa-check"></i><b>29.12.1</b> 图形逐步调整例子</a></li>
+</ul></li>
+<li class="chapter" data-level="29.13" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-theme"><i class="fa fa-check"></i><b>29.13</b> 主题</a></li>
+<li class="chapter" data-level="29.14" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-ref"><i class="fa fa-check"></i><b>29.14</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="ggplotvis.html"><a href="ggplotvis.html"><i class="fa fa-check"></i><b>30</b> ggplot的各种图形</a><ul>
+<li class="chapter" data-level="30.1" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-intro"><i class="fa fa-check"></i><b>30.1</b> 介绍</a></li>
+<li class="chapter" data-level="30.2" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-amount"><i class="fa fa-check"></i><b>30.2</b> 表现数量</a><ul>
+<li class="chapter" data-level="30.2.1" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-amount-bar"><i class="fa fa-check"></i><b>30.2.1</b> 条形图</a></li>
+<li class="chapter" data-level="30.2.2" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-amount-point"><i class="fa fa-check"></i><b>30.2.2</b> 点图</a></li>
+<li class="chapter" data-level="30.2.3" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-amount-heatmap"><i class="fa fa-check"></i><b>30.2.3</b> 热力图</a></li>
+</ul></li>
+<li class="chapter" data-level="30.3" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-dist"><i class="fa fa-check"></i><b>30.3</b> 表现分布</a><ul>
+<li class="chapter" data-level="30.3.1" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-dist-suni-hist"><i class="fa fa-check"></i><b>30.3.1</b> 单个一元分布的直方图与密度估计图</a></li>
+<li class="chapter" data-level="30.3.2" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-dist-muni"><i class="fa fa-check"></i><b>30.3.2</b> 多个一元分布的直方图和密度图形</a></li>
+<li class="chapter" data-level="30.3.3" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-dist-cdf"><i class="fa fa-check"></i><b>30.3.3</b> 经验分布函数图</a></li>
+<li class="chapter" data-level="30.3.4" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-dist-qqplot"><i class="fa fa-check"></i><b>30.3.4</b> QQ图</a></li>
+<li class="chapter" data-level="30.3.5" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-dist-boxplot"><i class="fa fa-check"></i><b>30.3.5</b> 盒形图</a></li>
+<li class="chapter" data-level="30.3.6" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-dist-violin"><i class="fa fa-check"></i><b>30.3.6</b> 小提琴图</a></li>
+<li class="chapter" data-level="30.3.7" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-dist-mdens"><i class="fa fa-check"></i><b>30.3.7</b> 多个密度的其它画法</a></li>
+<li class="chapter" data-level="30.3.8" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-dist-2d"><i class="fa fa-check"></i><b>30.3.8</b> 二元分布直方图和等值线图</a></li>
+</ul></li>
+<li class="chapter" data-level="30.4" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-prop"><i class="fa fa-check"></i><b>30.4</b> 表现比例</a><ul>
+<li class="chapter" data-level="30.4.1" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-prop-uni"><i class="fa fa-check"></i><b>30.4.1</b> 单个分布</a></li>
+<li class="chapter" data-level="30.4.2" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-prop-mult"><i class="fa fa-check"></i><b>30.4.2</b> 组间的比例分布的比较</a></li>
+<li class="chapter" data-level="30.4.3" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-prop-nest"><i class="fa fa-check"></i><b>30.4.3</b> 嵌套比例分布的比较</a></li>
+</ul></li>
+<li class="chapter" data-level="30.5" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-mulvar"><i class="fa fa-check"></i><b>30.5</b> 表现多个变量间的关系</a><ul>
+<li class="chapter" data-level="30.5.1" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-mulvar-scatter"><i class="fa fa-check"></i><b>30.5.1</b> 散点图</a></li>
+<li class="chapter" data-level="30.5.2" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-mulvar-scatmat"><i class="fa fa-check"></i><b>30.5.2</b> 散点图矩阵</a></li>
+<li class="chapter" data-level="30.5.3" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-mulvar-corrgram"><i class="fa fa-check"></i><b>30.5.3</b> 相关系数矩阵图</a></li>
+<li class="chapter" data-level="30.5.4" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-mulvar-dimreduct"><i class="fa fa-check"></i><b>30.5.4</b> 数据降维</a></li>
+<li class="chapter" data-level="30.5.5" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-mulvar-paird"><i class="fa fa-check"></i><b>30.5.5</b> 成对数据</a></li>
+</ul></li>
+<li class="chapter" data-level="30.6" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-ts"><i class="fa fa-check"></i><b>30.6</b> 时间序列图</a><ul>
+<li class="chapter" data-level="30.6.1" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-ts-uni"><i class="fa fa-check"></i><b>30.6.1</b> 一元时间序列</a></li>
+<li class="chapter" data-level="30.6.2" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-ts-mul"><i class="fa fa-check"></i><b>30.6.2</b> 多元时间序列</a></li>
+<li class="chapter" data-level="30.6.3" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-ts-het"><i class="fa fa-check"></i><b>30.6.3</b> 多个不同类型指标的时间序列</a></li>
+</ul></li>
+<li class="chapter" data-level="30.7" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-fit"><i class="fa fa-check"></i><b>30.7</b> 拟合曲线图</a><ul>
+<li class="chapter" data-level="30.7.1" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-fit-smooth"><i class="fa fa-check"></i><b>30.7.1</b> 平滑方法</a></li>
+<li class="chapter" data-level="30.7.2" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-fit-param"><i class="fa fa-check"></i><b>30.7.2</b> 参数模型方法</a></li>
+</ul></li>
+<li class="chapter" data-level="30.8" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-uncert"><i class="fa fa-check"></i><b>30.8</b> 表现不确定性</a><ul>
+<li class="chapter" data-level="30.8.1" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-uncert-prob"><i class="fa fa-check"></i><b>30.8.1</b> 表现概率</a></li>
+<li class="chapter" data-level="30.8.2" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-uncert-se"><i class="fa fa-check"></i><b>30.8.2</b> 表现点估计精度</a></li>
+<li class="chapter" data-level="30.8.3" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-uncert-cband"><i class="fa fa-check"></i><b>30.8.3</b> 拟合曲线的置信带</a></li>
+<li class="chapter" data-level="30.8.4" data-path="ggplotvis.html"><a href="ggplotvis.html#ggplotvis-uncert-dyn"><i class="fa fa-check"></i><b>30.8.4</b> 随机结果动态演示</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VII 统计模型</b></span></li>
+<li class="chapter" data-level="31" data-path="stat-basics.html"><a href="stat-basics.html"><i class="fa fa-check"></i><b>31</b> R初等统计分析</a><ul>
+<li class="chapter" data-level="31.1" data-path="stat-basics.html"><a href="stat-basics.html#stat-base-distr"><i class="fa fa-check"></i><b>31.1</b> 概率分布</a></li>
+<li class="chapter" data-level="31.2" data-path="stat-basics.html"><a href="stat-basics.html#stat-base-mle"><i class="fa fa-check"></i><b>31.2</b> 最大似然估计</a><ul>
+<li class="chapter" data-level="31.2.1" data-path="stat-basics.html"><a href="stat-basics.html#stat-base-mle-norm1"><i class="fa fa-check"></i><b>31.2.1</b> 一元正态分布参数最大似然估计</a></li>
+</ul></li>
+<li class="chapter" data-level="31.3" data-path="stat-basics.html"><a href="stat-basics.html#stat-base-hyptest"><i class="fa fa-check"></i><b>31.3</b> 假设检验和置信区间</a><ul>
+<li class="chapter" data-level="31.3.1" data-path="stat-basics.html"><a href="stat-basics.html#stat-base-hyptest-mu"><i class="fa fa-check"></i><b>31.3.1</b> 均值的假设检验和置信区间</a></li>
+<li class="chapter" data-level="31.3.2" data-path="stat-basics.html"><a href="stat-basics.html#stat-base-hyptest-prop"><i class="fa fa-check"></i><b>31.3.2</b> 比例的假设检验和置信区间</a></li>
+<li class="chapter" data-level="31.3.3" data-path="stat-basics.html"><a href="stat-basics.html#stat-base-hyptest-sigma"><i class="fa fa-check"></i><b>31.3.3</b> 方差的假设检验和置信区间</a></li>
+<li class="chapter" data-level="31.3.4" data-path="stat-basics.html"><a href="stat-basics.html#stat-base-hyptest-gof"><i class="fa fa-check"></i><b>31.3.4</b> 拟合优度检验</a></li>
+<li class="chapter" data-level="31.3.5" data-path="stat-basics.html"><a href="stat-basics.html#stat-base-hyptest-gof-vcd"><i class="fa fa-check"></i><b>31.3.5</b> 检验分布类型</a></li>
+<li class="chapter" data-level="31.3.6" data-path="stat-basics.html"><a href="stat-basics.html#stat-base-hyptest-indepcont"><i class="fa fa-check"></i><b>31.3.6</b> 列联表独立性卡方检验</a></li>
+<li class="chapter" data-level="31.3.7" data-path="stat-basics.html"><a href="stat-basics.html#stat-base-hyptest-npar"><i class="fa fa-check"></i><b>31.3.7</b> 非参数检验</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="stat-reg.html"><a href="stat-reg.html"><i class="fa fa-check"></i><b>32</b> R相关与回归</a><ul>
+<li class="chapter" data-level="32.1" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-cor"><i class="fa fa-check"></i><b>32.1</b> 相关分析</a><ul>
+<li class="chapter" data-level="32.1.1" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-cor-prop"><i class="fa fa-check"></i><b>32.1.1</b> 相关系数的性质</a></li>
+<li class="chapter" data-level="32.1.2" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-cor-caus"><i class="fa fa-check"></i><b>32.1.2</b> 相关与因果</a></li>
+<li class="chapter" data-level="32.1.3" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-cor-magn"><i class="fa fa-check"></i><b>32.1.3</b> 相关系数大小</a></li>
+<li class="chapter" data-level="32.1.4" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-cor-test"><i class="fa fa-check"></i><b>32.1.4</b> 相关系数的检验</a></li>
+<li class="chapter" data-level="32.1.5" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-cor-vcorr"><i class="fa fa-check"></i><b>32.1.5</b> 相关阵</a></li>
+</ul></li>
+<li class="chapter" data-level="32.2" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regsimp"><i class="fa fa-check"></i><b>32.2</b> 一元回归分析</a><ul>
+<li class="chapter" data-level="32.2.1" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regsimp-model"><i class="fa fa-check"></i><b>32.2.1</b> 模型</a></li>
+<li class="chapter" data-level="32.2.2" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regsimp-ls"><i class="fa fa-check"></i><b>32.2.2</b> 最小二乘法</a></li>
+<li class="chapter" data-level="32.2.3" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regsimp-test"><i class="fa fa-check"></i><b>32.2.3</b> 回归有效性</a></li>
+<li class="chapter" data-level="32.2.4" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regsimp-prog"><i class="fa fa-check"></i><b>32.2.4</b> R程序</a></li>
+<li class="chapter" data-level="32.2.5" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regsimp-diag"><i class="fa fa-check"></i><b>32.2.5</b> 回归诊断</a></li>
+<li class="chapter" data-level="32.2.6" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regsimp-ci"><i class="fa fa-check"></i><b>32.2.6</b> 预测区间</a></li>
+<li class="chapter" data-level="32.2.7" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regsimp-control"><i class="fa fa-check"></i><b>32.2.7</b> 控制</a></li>
+</ul></li>
+<li class="chapter" data-level="32.3" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu"><i class="fa fa-check"></i><b>32.3</b> 多元线性回归</a><ul>
+<li class="chapter" data-level="32.3.1" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-mod"><i class="fa fa-check"></i><b>32.3.1</b> 模型</a></li>
+<li class="chapter" data-level="32.3.2" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-est"><i class="fa fa-check"></i><b>32.3.2</b> 参数估计</a></li>
+<li class="chapter" data-level="32.3.3" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-rcode"><i class="fa fa-check"></i><b>32.3.3</b> R的多元回归程序</a></li>
+<li class="chapter" data-level="32.3.4" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-test"><i class="fa fa-check"></i><b>32.3.4</b> 模型的检验</a></li>
+<li class="chapter" data-level="32.3.5" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-subset"><i class="fa fa-check"></i><b>32.3.5</b> 回归自变量筛选</a></li>
+<li class="chapter" data-level="32.3.6" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-dum"><i class="fa fa-check"></i><b>32.3.6</b> 哑变量与变截距项的模型</a></li>
+<li class="chapter" data-level="32.3.7" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-resid"><i class="fa fa-check"></i><b>32.3.7</b> 残差诊断</a></li>
+<li class="chapter" data-level="32.3.8" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-colin"><i class="fa fa-check"></i><b>32.3.8</b> 多重共线性</a></li>
+<li class="chapter" data-level="32.3.9" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-lev"><i class="fa fa-check"></i><b>32.3.9</b> 强影响点分析</a></li>
+<li class="chapter" data-level="32.3.10" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-overfit"><i class="fa fa-check"></i><b>32.3.10</b> 过度拟合示例</a></li>
+<li class="chapter" data-level="32.3.11" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-comp-inset"><i class="fa fa-check"></i><b>32.3.11</b> 嵌套模型的比较</a></li>
+<li class="chapter" data-level="32.3.12" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-pred"><i class="fa fa-check"></i><b>32.3.12</b> 拟合与预测</a></li>
+<li class="chapter" data-level="32.3.13" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-curve"><i class="fa fa-check"></i><b>32.3.13</b> 利用线性回归模型做曲线拟合</a></li>
+<li class="chapter" data-level="32.3.14" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-regmu-group"><i class="fa fa-check"></i><b>32.3.14</b> 分组建立多个模型</a></li>
+</ul></li>
+<li class="chapter" data-level="32.4" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-npar"><i class="fa fa-check"></i><b>32.4</b> 非参数回归</a><ul>
+<li class="chapter" data-level="32.4.1" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-npar-mod"><i class="fa fa-check"></i><b>32.4.1</b> 模型</a></li>
+<li class="chapter" data-level="32.4.2" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-cfit-spl1d"><i class="fa fa-check"></i><b>32.4.2</b> 样条平滑</a></li>
+<li class="chapter" data-level="32.4.3" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-cfit-loess"><i class="fa fa-check"></i><b>32.4.3</b> 局部多项式曲线平滑</a></li>
+<li class="chapter" data-level="32.4.4" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-cfit-bs"><i class="fa fa-check"></i><b>32.4.4</b> 样条函数变换</a></li>
+<li class="chapter" data-level="32.4.5" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-cfit-gam"><i class="fa fa-check"></i><b>32.4.5</b> 线性可加模型</a></li>
+</ul></li>
+<li class="chapter" data-level="32.5" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-reglog"><i class="fa fa-check"></i><b>32.5</b> Logistic回归</a><ul>
+<li class="chapter" data-level="32.5.1" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-reglog-mod"><i class="fa fa-check"></i><b>32.5.1</b> 模型</a></li>
+<li class="chapter" data-level="32.5.2" data-path="stat-reg.html"><a href="stat-reg.html#stat-base-reg-reglog-rcode"><i class="fa fa-check"></i><b>32.5.2</b> R程序</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="stat-tsa.html"><a href="stat-tsa.html"><i class="fa fa-check"></i><b>33</b> R时间序列分析</a><ul>
+<li class="chapter" data-level="33.1" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-defs"><i class="fa fa-check"></i><b>33.1</b> 基本概念</a></li>
+<li class="chapter" data-level="33.2" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-dtype"><i class="fa fa-check"></i><b>33.2</b> 时间序列数据类型</a><ul>
+<li class="chapter" data-level="33.2.1" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-dtype-ts"><i class="fa fa-check"></i><b>33.2.1</b> ts类型</a></li>
+<li class="chapter" data-level="33.2.2" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-dtype-xts"><i class="fa fa-check"></i><b>33.2.2</b> xts类型与常用函数</a></li>
+</ul></li>
+<li class="chapter" data-level="33.3" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-basicstat"><i class="fa fa-check"></i><b>33.3</b> 基本分析与作图</a></li>
+<li class="chapter" data-level="33.4" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-arima"><i class="fa fa-check"></i><b>33.4</b> ARIMA建模和模拟</a><ul>
+<li class="chapter" data-level="33.4.1" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-arima-def"><i class="fa fa-check"></i><b>33.4.1</b> 模型公式</a></li>
+<li class="chapter" data-level="33.4.2" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-arima-sim"><i class="fa fa-check"></i><b>33.4.2</b> 模拟</a></li>
+<li class="chapter" data-level="33.4.3" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-arima-armod"><i class="fa fa-check"></i><b>33.4.3</b> AR建模</a></li>
+<li class="chapter" data-level="33.4.4" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-arima-armamod"><i class="fa fa-check"></i><b>33.4.4</b> ARMA建模</a></li>
+<li class="chapter" data-level="33.4.5" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-arima-diag"><i class="fa fa-check"></i><b>33.4.5</b> 模型诊断</a></li>
+<li class="chapter" data-level="33.4.6" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-arima-lbtest"><i class="fa fa-check"></i><b>33.4.6</b> 白噪声检验</a></li>
+<li class="chapter" data-level="33.4.7" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-arima-sparse"><i class="fa fa-check"></i><b>33.4.7</b> 稀疏系数估计</a></li>
+<li class="chapter" data-level="33.4.8" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-arima-adftest"><i class="fa fa-check"></i><b>33.4.8</b> 单位根检验</a></li>
+<li class="chapter" data-level="33.4.9" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-arima-cfuncs"><i class="fa fa-check"></i><b>33.4.9</b> ARMA模型的一些自定义函数</a></li>
+</ul></li>
+<li class="chapter" data-level="33.5" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-spectra"><i class="fa fa-check"></i><b>33.5</b> 谱密度估计</a></li>
+<li class="chapter" data-level="33.6" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-garch"><i class="fa fa-check"></i><b>33.6</b> GARCH类模型</a></li>
+<li class="chapter" data-level="33.7" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-mtsa"><i class="fa fa-check"></i><b>33.7</b> 多元时间序列基础统计</a></li>
+<li class="chapter" data-level="33.8" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-var"><i class="fa fa-check"></i><b>33.8</b> VAR模型</a></li>
+<li class="chapter" data-level="33.9" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-coint"><i class="fa fa-check"></i><b>33.9</b> 协整分析</a></li>
+<li class="chapter" data-level="33.10" data-path="stat-tsa.html"><a href="stat-tsa.html#stat-tsa-causal"><i class="fa fa-check"></i><b>33.10</b> 因果性检验</a></li>
+</ul></li>
+<li class="chapter" data-level="34" data-path="stat-learning.html"><a href="stat-learning.html"><i class="fa fa-check"></i><b>34</b> 统计学习介绍</a><ul>
+<li class="chapter" data-level="34.1" data-path="stat-learning.html"><a href="stat-learning.html#statl-intro"><i class="fa fa-check"></i><b>34.1</b> 统计学习的基本概念和一般步骤</a><ul>
+<li class="chapter" data-level="34.1.1" data-path="stat-learning.html"><a href="stat-learning.html#statl-intro-basic"><i class="fa fa-check"></i><b>34.1.1</b> 统计学习的基本概念和方法</a></li>
+<li class="chapter" data-level="34.1.2" data-path="stat-learning.html"><a href="stat-learning.html#statl-intro-biasvar"><i class="fa fa-check"></i><b>34.1.2</b> 偏差与方差折衷</a></li>
+<li class="chapter" data-level="34.1.3" data-path="stat-learning.html"><a href="stat-learning.html#statl-cv"><i class="fa fa-check"></i><b>34.1.3</b> 交叉验证</a></li>
+<li class="chapter" data-level="34.1.4" data-path="stat-learning.html"><a href="stat-learning.html#statl-steps"><i class="fa fa-check"></i><b>34.1.4</b> 一般步骤</a></li>
+</ul></li>
+<li class="chapter" data-level="34.2" data-path="stat-learning.html"><a href="stat-learning.html#statl-hitters"><i class="fa fa-check"></i><b>34.2</b> Hitters数据分析</a><ul>
+<li class="chapter" data-level="34.2.1" data-path="stat-learning.html"><a href="stat-learning.html#statl-hitters-subset"><i class="fa fa-check"></i><b>34.2.1</b> 回归自变量选择</a></li>
+<li class="chapter" data-level="34.2.2" data-path="stat-learning.html"><a href="stat-learning.html#statl-hitters-ridge"><i class="fa fa-check"></i><b>34.2.2</b> 岭回归</a></li>
+<li class="chapter" data-level="34.2.3" data-path="stat-learning.html"><a href="stat-learning.html#statl-hitters-lasso"><i class="fa fa-check"></i><b>34.2.3</b> Lasso回归</a></li>
+<li class="chapter" data-level="34.2.4" data-path="stat-learning.html"><a href="stat-learning.html#statl-hitters-simpt"><i class="fa fa-check"></i><b>34.2.4</b> 树回归的简单演示</a></li>
+<li class="chapter" data-level="34.2.5" data-path="stat-learning.html"><a href="stat-learning.html#statl-hitters-tree"><i class="fa fa-check"></i><b>34.2.5</b> 树回归</a></li>
+<li class="chapter" data-level="34.2.6" data-path="stat-learning.html"><a href="stat-learning.html#statl-hitters-bag"><i class="fa fa-check"></i><b>34.2.6</b> 装袋法</a></li>
+<li class="chapter" data-level="34.2.7" data-path="stat-learning.html"><a href="stat-learning.html#statl-hitters-rf"><i class="fa fa-check"></i><b>34.2.7</b> 随机森林</a></li>
+</ul></li>
+<li class="chapter" data-level="34.3" data-path="stat-learning.html"><a href="stat-learning.html#statl-heart"><i class="fa fa-check"></i><b>34.3</b> Heart数据分析</a><ul>
+<li class="chapter" data-level="34.3.1" data-path="stat-learning.html"><a href="stat-learning.html#statl-heart-tree"><i class="fa fa-check"></i><b>34.3.1</b> 树回归</a></li>
+<li class="chapter" data-level="34.3.2" data-path="stat-learning.html"><a href="stat-learning.html#statl-heart-bag"><i class="fa fa-check"></i><b>34.3.2</b> 用装袋法</a></li>
+<li class="chapter" data-level="34.3.3" data-path="stat-learning.html"><a href="stat-learning.html#statl-heart-rf"><i class="fa fa-check"></i><b>34.3.3</b> 用随机森林</a></li>
+</ul></li>
+<li class="chapter" data-level="34.4" data-path="stat-learning.html"><a href="stat-learning.html#statl-car"><i class="fa fa-check"></i><b>34.4</b> 汽车销量数据分析</a><ul>
+<li class="chapter" data-level="34.4.1" data-path="stat-learning.html"><a href="stat-learning.html#statl-car-tree"><i class="fa fa-check"></i><b>34.4.1</b> 判别树</a></li>
+<li class="chapter" data-level="34.4.2" data-path="stat-learning.html"><a href="stat-learning.html#statl-car-rf"><i class="fa fa-check"></i><b>34.4.2</b> 随机森林</a></li>
+</ul></li>
+<li class="chapter" data-level="34.5" data-path="stat-learning.html"><a href="stat-learning.html#statl-boston"><i class="fa fa-check"></i><b>34.5</b> 波士顿郊区房价数据</a><ul>
+<li class="chapter" data-level="34.5.1" data-path="stat-learning.html"><a href="stat-learning.html#statl-boston-tree"><i class="fa fa-check"></i><b>34.5.1</b> 回归树</a></li>
+<li class="chapter" data-level="34.5.2" data-path="stat-learning.html"><a href="stat-learning.html#statl-boston-bag"><i class="fa fa-check"></i><b>34.5.2</b> 装袋法</a></li>
+<li class="chapter" data-level="34.5.3" data-path="stat-learning.html"><a href="stat-learning.html#statl-boston-rf"><i class="fa fa-check"></i><b>34.5.3</b> 随机森林</a></li>
+<li class="chapter" data-level="34.5.4" data-path="stat-learning.html"><a href="stat-learning.html#statl-boston-boost"><i class="fa fa-check"></i><b>34.5.4</b> 提升法</a></li>
+</ul></li>
+<li class="chapter" data-level="34.6" data-path="stat-learning.html"><a href="stat-learning.html#statl-svm"><i class="fa fa-check"></i><b>34.6</b> 支持向量机方法</a><ul>
+<li class="chapter" data-level="34.6.1" data-path="stat-learning.html"><a href="stat-learning.html#statl-svm-heart"><i class="fa fa-check"></i><b>34.6.1</b> 支持向量机用于Heart数据</a></li>
+</ul></li>
+<li class="chapter" data-level="34.7" data-path="stat-learning.html"><a href="stat-learning.html#statl-app"><i class="fa fa-check"></i><b>34.7</b> 附录</a><ul>
+<li class="chapter" data-level="34.7.1" data-path="stat-learning.html"><a href="stat-learning.html#statl-app-hitters"><i class="fa fa-check"></i><b>34.7.1</b> Hitters数据</a></li>
+<li class="chapter" data-level="34.7.2" data-path="stat-learning.html"><a href="stat-learning.html#statl-app-heart"><i class="fa fa-check"></i><b>34.7.2</b> Heart数据</a></li>
+<li class="chapter" data-level="34.7.3" data-path="stat-learning.html"><a href="stat-learning.html#statl-app-car"><i class="fa fa-check"></i><b>34.7.3</b> CarSeats数据</a></li>
+<li class="chapter" data-level="34.7.4" data-path="stat-learning.html"><a href="stat-learning.html#statl-app-boston"><i class="fa fa-check"></i><b>34.7.4</b> Boston数据</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>35</b> 随机模拟</a><ul>
+<li class="chapter" data-level="35.1" data-path="simulation.html"><a href="simulation.html#simint"><i class="fa fa-check"></i><b>35.1</b> 随机数</a></li>
+<li class="chapter" data-level="35.2" data-path="simulation.html"><a href="simulation.html#simsamp"><i class="fa fa-check"></i><b>35.2</b> <code>sample()</code>函数</a></li>
+<li class="chapter" data-level="35.3" data-path="simulation.html"><a href="simulation.html#simexamp"><i class="fa fa-check"></i><b>35.3</b> 随机模拟示例</a><ul>
+<li class="chapter" data-level="35.3.1" data-path="simulation.html"><a href="simulation.html#simexamp-expect"><i class="fa fa-check"></i><b>35.3.1</b> 估计期望值</a></li>
+<li class="chapter" data-level="35.3.2" data-path="simulation.html"><a href="simulation.html#simexamp-lm"><i class="fa fa-check"></i><b>35.3.2</b> 线性回归模拟</a></li>
+<li class="chapter" data-level="35.3.3" data-path="simulation.html"><a href="simulation.html#simexamp-kde"><i class="fa fa-check"></i><b>35.3.3</b> 核密度的bootstrap置信区间</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VIII 特殊应用</b></span></li>
+<li class="chapter" data-level="36" data-path="text.html"><a href="text.html"><i class="fa fa-check"></i><b>36</b> R语言的文本处理</a><ul>
+<li class="chapter" data-level="36.1" data-path="text.html"><a href="text.html#text-simple"><i class="fa fa-check"></i><b>36.1</b> 简单的文本处理</a><ul>
+<li class="chapter" data-level="36.1.1" data-path="text.html"><a href="text.html#text-simple-const"><i class="fa fa-check"></i><b>36.1.1</b> 字符型常量与字符型向量</a></li>
+<li class="chapter" data-level="36.1.2" data-path="text.html"><a href="text.html#text-paste"><i class="fa fa-check"></i><b>36.1.2</b> 字符串连接、重复</a></li>
+<li class="chapter" data-level="36.1.3" data-path="text.html"><a href="text.html#text-formatout"><i class="fa fa-check"></i><b>36.1.3</b> 格式化输出</a></li>
+<li class="chapter" data-level="36.1.4" data-path="text.html"><a href="text.html#text-length"><i class="fa fa-check"></i><b>36.1.4</b> 字符串长度</a></li>
+<li class="chapter" data-level="36.1.5" data-path="text.html"><a href="text.html#text-substring"><i class="fa fa-check"></i><b>36.1.5</b> 取子串</a></li>
+<li class="chapter" data-level="36.1.6" data-path="text.html"><a href="text.html#text-convert"><i class="fa fa-check"></i><b>36.1.6</b> 字符串变换</a></li>
+<li class="chapter" data-level="36.1.7" data-path="text.html"><a href="text.html#text-simp-find"><i class="fa fa-check"></i><b>36.1.7</b> 简单匹配与查找</a></li>
+<li class="chapter" data-level="36.1.8" data-path="text.html"><a href="text.html#text-simple-gsub"><i class="fa fa-check"></i><b>36.1.8</b> 字符串替换</a></li>
+<li class="chapter" data-level="36.1.9" data-path="text.html"><a href="text.html#text-simple-strsplit"><i class="fa fa-check"></i><b>36.1.9</b> 字符串拆分</a></li>
+</ul></li>
+<li class="chapter" data-level="36.2" data-path="text.html"><a href="text.html#text-file"><i class="fa fa-check"></i><b>36.2</b> 文本文件读写</a></li>
+<li class="chapter" data-level="36.3" data-path="text.html"><a href="text.html#text-regex"><i class="fa fa-check"></i><b>36.3</b> 正则表达式</a><ul>
+<li class="chapter" data-level="36.3.1" data-path="text.html"><a href="text.html#text-regex-strview"><i class="fa fa-check"></i><b>36.3.1</b> 字面匹配与匹配显示</a></li>
+<li class="chapter" data-level="36.3.2" data-path="text.html"><a href="text.html#text-regex-ignore"><i class="fa fa-check"></i><b>36.3.2</b> 不区分大小写匹配和<code>regex</code>函数</a></li>
+<li class="chapter" data-level="36.3.3" data-path="text.html"><a href="text.html#text-regex-dot"><i class="fa fa-check"></i><b>36.3.3</b> 用句点匹配单个字符</a></li>
+<li class="chapter" data-level="36.3.4" data-path="text.html"><a href="text.html#text-regex-set"><i class="fa fa-check"></i><b>36.3.4</b> 匹配一组字符中的某一个</a></li>
+<li class="chapter" data-level="36.3.5" data-path="text.html"><a href="text.html#text-regex-metalit"><i class="fa fa-check"></i><b>36.3.5</b> 原样匹配元字符</a></li>
+<li class="chapter" data-level="36.3.6" data-path="text.html"><a href="text.html#text-regex-space"><i class="fa fa-check"></i><b>36.3.6</b> 匹配空白</a></li>
+<li class="chapter" data-level="36.3.7" data-path="text.html"><a href="text.html#text-regex-digit"><i class="fa fa-check"></i><b>36.3.7</b> 匹配数字</a></li>
+<li class="chapter" data-level="36.3.8" data-path="text.html"><a href="text.html#text-regex-alnum"><i class="fa fa-check"></i><b>36.3.8</b> 匹配字母、数字、下划线</a></li>
+<li class="chapter" data-level="36.3.9" data-path="text.html"><a href="text.html#text-regex-hex"><i class="fa fa-check"></i><b>36.3.9</b> 十六进制和八进制数</a></li>
+<li class="chapter" data-level="36.3.10" data-path="text.html"><a href="text.html#text-regex-posix"><i class="fa fa-check"></i><b>36.3.10</b> POSIX字符类</a></li>
+<li class="chapter" data-level="36.3.11" data-path="text.html"><a href="text.html#text-regex-start"><i class="fa fa-check"></i><b>36.3.11</b> 匹配开头和末尾</a></li>
+<li class="chapter" data-level="36.3.12" data-path="text.html"><a href="text.html#text-regex-wordb"><i class="fa fa-check"></i><b>36.3.12</b> 单词边界</a></li>
+<li class="chapter" data-level="36.3.13" data-path="text.html"><a href="text.html#text-regex-repeat"><i class="fa fa-check"></i><b>36.3.13</b> 重复匹配</a></li>
+<li class="chapter" data-level="36.3.14" data-path="text.html"><a href="text.html#text-regex-lazy"><i class="fa fa-check"></i><b>36.3.14</b> 贪婪匹配和懒惰匹配</a></li>
+<li class="chapter" data-level="36.3.15" data-path="text.html"><a href="text.html#text-regex-smlines"><i class="fa fa-check"></i><b>36.3.15</b> 句点全匹配与多行模式</a></li>
+<li class="chapter" data-level="36.3.16" data-path="text.html"><a href="text.html#text-regex-alt"><i class="fa fa-check"></i><b>36.3.16</b> 备择模式</a></li>
+<li class="chapter" data-level="36.3.17" data-path="text.html"><a href="text.html#text-regex-group"><i class="fa fa-check"></i><b>36.3.17</b> 分组与捕获</a></li>
+</ul></li>
+<li class="chapter" data-level="36.4" data-path="text.html"><a href="text.html#text-stringr-funcs"><i class="fa fa-check"></i><b>36.4</b> stringr包的正则表达式函数</a><ul>
+<li class="chapter" data-level="36.4.1" data-path="text.html"><a href="text.html#text-stringr-funcs-strview"><i class="fa fa-check"></i><b>36.4.1</b> <code>str_view()</code>函数</a></li>
+<li class="chapter" data-level="36.4.2" data-path="text.html"><a href="text.html#text-stringr-funcs-regex"><i class="fa fa-check"></i><b>36.4.2</b> <code>regex()</code>函数</a></li>
+<li class="chapter" data-level="36.4.3" data-path="text.html"><a href="text.html#text-stringr-funcs-detect"><i class="fa fa-check"></i><b>36.4.3</b> 检查那些元素能够匹配</a></li>
+<li class="chapter" data-level="36.4.4" data-path="text.html"><a href="text.html#text-stringr-funcs-replace"><i class="fa fa-check"></i><b>36.4.4</b> 替换</a></li>
+<li class="chapter" data-level="36.4.5" data-path="text.html"><a href="text.html#text-stringr-funcs-subset"><i class="fa fa-check"></i><b>36.4.5</b> 返回匹配的元素</a></li>
+<li class="chapter" data-level="36.4.6" data-path="text.html"><a href="text.html#text-stringr-funcs-extract"><i class="fa fa-check"></i><b>36.4.6</b> 提取匹配内容</a></li>
+<li class="chapter" data-level="36.4.7" data-path="text.html"><a href="text.html#text-stringr-funcs-match"><i class="fa fa-check"></i><b>36.4.7</b> 提取分组捕获内容</a></li>
+<li class="chapter" data-level="36.4.8" data-path="text.html"><a href="text.html#text-stringr-funcs-locate"><i class="fa fa-check"></i><b>36.4.8</b> 定位匹配位置</a></li>
+</ul></li>
+<li class="chapter" data-level="36.5" data-path="text.html"><a href="text.html#text-regex-bfuncs"><i class="fa fa-check"></i><b>36.5</b> 利用基本R函数进行正则表达式处理</a><ul>
+<li class="chapter" data-level="36.5.1" data-path="text.html"><a href="text.html#text-regex-bfuncs-igcase"><i class="fa fa-check"></i><b>36.5.1</b> 不区分大小写匹配</a></li>
+<li class="chapter" data-level="36.5.2" data-path="text.html"><a href="text.html#text-regex-bfuncs-dotp"><i class="fa fa-check"></i><b>36.5.2</b> 匹配单个字符</a></li>
+<li class="chapter" data-level="36.5.3" data-path="text.html"><a href="text.html#text-regex-bfuncs-setp"><i class="fa fa-check"></i><b>36.5.3</b> 匹配一组字符中的某一个</a></li>
+<li class="chapter" data-level="36.5.4" data-path="text.html"><a href="text.html#text-regex-bfuncs-metalit"><i class="fa fa-check"></i><b>36.5.4</b> 原样匹配元字符</a></li>
+<li class="chapter" data-level="36.5.5" data-path="text.html"><a href="text.html#text-regex-bfuncs-digit"><i class="fa fa-check"></i><b>36.5.5</b> 匹配数字</a></li>
+<li class="chapter" data-level="36.5.6" data-path="text.html"><a href="text.html#text-regex-bfuncs-start"><i class="fa fa-check"></i><b>36.5.6</b> 匹配开头和末尾</a></li>
+<li class="chapter" data-level="36.5.7" data-path="text.html"><a href="text.html#text-regex-bfuncs-alnum"><i class="fa fa-check"></i><b>36.5.7</b> 匹配字母、数字、下划线</a></li>
+<li class="chapter" data-level="36.5.8" data-path="text.html"><a href="text.html#text-regex-bfuncs-hex"><i class="fa fa-check"></i><b>36.5.8</b> 十六进制和八进制数</a></li>
+<li class="chapter" data-level="36.5.9" data-path="text.html"><a href="text.html#text-regex-bfuncs-posix"><i class="fa fa-check"></i><b>36.5.9</b> POSIX字符类</a></li>
+<li class="chapter" data-level="36.5.10" data-path="text.html"><a href="text.html#text-regex-bfuncs-plus"><i class="fa fa-check"></i><b>36.5.10</b> 加号重复匹配</a></li>
+<li class="chapter" data-level="36.5.11" data-path="text.html"><a href="text.html#text-regex-bfuncs-ast"><i class="fa fa-check"></i><b>36.5.11</b> 星号和问号重复匹配</a></li>
+<li class="chapter" data-level="36.5.12" data-path="text.html"><a href="text.html#text-regex-bfuncs-repnum"><i class="fa fa-check"></i><b>36.5.12</b> 计数重复</a></li>
+<li class="chapter" data-level="36.5.13" data-path="text.html"><a href="text.html#text-regex-bfuncs-lazy"><i class="fa fa-check"></i><b>36.5.13</b> 贪婪匹配和懒惰匹配</a></li>
+<li class="chapter" data-level="36.5.14" data-path="text.html"><a href="text.html#text-regex-bfuncs-wordb"><i class="fa fa-check"></i><b>36.5.14</b> 单词边界</a></li>
+<li class="chapter" data-level="36.5.15" data-path="text.html"><a href="text.html#text-regex-bfuncs-sm"><i class="fa fa-check"></i><b>36.5.15</b> 句点全匹配与多行模式</a></li>
+<li class="chapter" data-level="36.5.16" data-path="text.html"><a href="text.html#text-regex-bfuncs-alt"><i class="fa fa-check"></i><b>36.5.16</b> 备择模式</a></li>
+<li class="chapter" data-level="36.5.17" data-path="text.html"><a href="text.html#text-regex-bfuncs-group"><i class="fa fa-check"></i><b>36.5.17</b> 分组与捕获</a></li>
+</ul></li>
+<li class="chapter" data-level="36.6" data-path="text.html"><a href="text.html#text-regexex"><i class="fa fa-check"></i><b>36.6</b> 正则表达式应用例子</a><ul>
+<li class="chapter" data-level="36.6.1" data-path="text.html"><a href="text.html#text-regexex-pre"><i class="fa fa-check"></i><b>36.6.1</b> 数据预处理</a></li>
+<li class="chapter" data-level="36.6.2" data-path="text.html"><a href="text.html#text-regexex-excelmore"><i class="fa fa-check"></i><b>36.6.2</b> 不规则Excel文件处理</a></li>
+<li class="chapter" data-level="36.6.3" data-path="text.html"><a href="text.html#text-regexex-wordfreq"><i class="fa fa-check"></i><b>36.6.3</b> 字频统计</a></li>
+<li class="chapter" data-level="36.6.4" data-path="text.html"><a href="text.html#text-regexex-digits"><i class="fa fa-check"></i><b>36.6.4</b> 数字验证</a></li>
+<li class="chapter" data-level="36.6.5" data-path="text.html"><a href="text.html#text-regexex-digfn"><i class="fa fa-check"></i><b>36.6.5</b> 文件名中的数字提取</a></li>
+</ul></li>
+<li class="chapter" data-level="36.7" data-path="text.html"><a href="text.html#text-webscape"><i class="fa fa-check"></i><b>36.7</b> 网站数据获取</a></li>
+<li class="chapter" data-level="36.8" data-path="text.html"><a href="text.html#text-jiebaR"><i class="fa fa-check"></i><b>36.8</b> 中文分词与词频</a></li>
+</ul></li>
+<li class="part"><span><b>IX 用Rcpp访问C++代码</b></span></li>
+<li class="chapter" data-level="37" data-path="rcpp.html"><a href="rcpp.html"><i class="fa fa-check"></i><b>37</b> Rcpp介绍</a><ul>
+<li class="chapter" data-level="37.1" data-path="rcpp.html"><a href="rcpp.html#rcpp-intro-use"><i class="fa fa-check"></i><b>37.1</b> Rcpp的用途</a></li>
+<li class="chapter" data-level="37.2" data-path="rcpp.html"><a href="rcpp.html#rcpp-intro-examp"><i class="fa fa-check"></i><b>37.2</b> Rcpp入门样例</a><ul>
+<li class="chapter" data-level="37.2.1" data-path="rcpp.html"><a href="rcpp.html#rcpp-intro-examp-ex1"><i class="fa fa-check"></i><b>37.2.1</b> 用<code>cppFunction()</code>转换简单的C++函数—Fibnacci例子</a></li>
+<li class="chapter" data-level="37.2.2" data-path="rcpp.html"><a href="rcpp.html#rcpp-intro-examp-ex2"><i class="fa fa-check"></i><b>37.2.2</b> 用<code>sourceCpp()</code>转换C++程序—正负交替迭代例子</a></li>
+<li class="chapter" data-level="37.2.3" data-path="rcpp.html"><a href="rcpp.html#rcpp-intro-examp-ex3"><i class="fa fa-check"></i><b>37.2.3</b> 用<code>sourceCpp()</code>转换C++源文件中的程序—正负交替迭代例子</a></li>
+<li class="chapter" data-level="37.2.4" data-path="rcpp.html"><a href="rcpp.html#rcpp-intro-examp-ex4"><i class="fa fa-check"></i><b>37.2.4</b> 用<code>sourceCpp()</code>转换C++源程序文件—卷积例子</a></li>
+<li class="chapter" data-level="37.2.5" data-path="rcpp.html"><a href="rcpp.html#rcpp-intro-examp-rmdconv"><i class="fa fa-check"></i><b>37.2.5</b> 在Rmd文件中使用C++源程序文件</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="38" data-path="rcpp-typeconv.html"><a href="rcpp-typeconv.html"><i class="fa fa-check"></i><b>38</b> R与C++的类型转换</a><ul>
+<li class="chapter" data-level="38.1" data-path="rcpp-typeconv.html"><a href="rcpp-typeconv.html#rcpp-typeconv-wrap"><i class="fa fa-check"></i><b>38.1</b> 用<code>wrap()</code>把C++变量返回到R中</a></li>
+<li class="chapter" data-level="38.2" data-path="rcpp-typeconv.html"><a href="rcpp-typeconv.html#rcpp-typeconv-as"><i class="fa fa-check"></i><b>38.2</b> 用<code>as()</code>函数把R变量转换为C++类型</a></li>
+<li class="chapter" data-level="38.3" data-path="rcpp-typeconv.html"><a href="rcpp-typeconv.html#rcpp-typeconv-implicit"><i class="fa fa-check"></i><b>38.3</b> <code>as()</code>和<code>wrap()</code>的隐含调用</a></li>
+</ul></li>
+<li class="chapter" data-level="39" data-path="rcpp-attr.html"><a href="rcpp-attr.html"><i class="fa fa-check"></i><b>39</b> Rcpp 属性</a><ul>
+<li class="chapter" data-level="39.1" data-path="rcpp-attr.html"><a href="rcpp-attr.html#rcpp-attr-intro"><i class="fa fa-check"></i><b>39.1</b> Rcpp属性介绍</a></li>
+<li class="chapter" data-level="39.2" data-path="rcpp-attr.html"><a href="rcpp-attr.html#rcpp-attr-export"><i class="fa fa-check"></i><b>39.2</b> 在C++源程序中指定要导出的C++函数</a></li>
+<li class="chapter" data-level="39.3" data-path="rcpp-attr.html"><a href="rcpp-attr.html#rcpp-attr-sourcecpp"><i class="fa fa-check"></i><b>39.3</b> 在R中编译链接C++代码</a></li>
+<li class="chapter" data-level="39.4" data-path="rcpp-attr.html"><a href="rcpp-attr.html#rcpp-attr-misc"><i class="fa fa-check"></i><b>39.4</b> Rcpp属性的其它功能</a><ul>
+<li class="chapter" data-level="39.4.1" data-path="rcpp-attr.html"><a href="rcpp-attr.html#rcpp-attr-misc-default"><i class="fa fa-check"></i><b>39.4.1</b> 自变量有缺省值的函数</a></li>
+<li class="chapter" data-level="39.4.2" data-path="rcpp-attr.html"><a href="rcpp-attr.html#rcpp-attr-misc-interrupt"><i class="fa fa-check"></i><b>39.4.2</b> 允许用户中断</a></li>
+<li class="chapter" data-level="39.4.3" data-path="rcpp-attr.html"><a href="rcpp-attr.html#rcpp-attr-misc-rinclude"><i class="fa fa-check"></i><b>39.4.3</b> 把R代码写在C++源文件中</a></li>
+<li class="chapter" data-level="39.4.4" data-path="rcpp-attr.html"><a href="rcpp-attr.html#rcpp-attr-misc-rand"><i class="fa fa-check"></i><b>39.4.4</b> 在C++中调用R的随机数发生器</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="40" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html"><i class="fa fa-check"></i><b>40</b> Rcpp提供的C++数据类型</a><ul>
+<li class="chapter" data-level="40.1" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-robject"><i class="fa fa-check"></i><b>40.1</b> RObject类</a></li>
+<li class="chapter" data-level="40.2" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-ivec"><i class="fa fa-check"></i><b>40.2</b> IntegerVector类</a><ul>
+<li class="chapter" data-level="40.2.1" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-ivec-ex1"><i class="fa fa-check"></i><b>40.2.1</b> IntegerVector示例1：返回完全数</a></li>
+<li class="chapter" data-level="40.2.2" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-ivec-ex2"><i class="fa fa-check"></i><b>40.2.2</b> IntegerVector示例2：输入整数向量</a></li>
+</ul></li>
+<li class="chapter" data-level="40.3" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-num"><i class="fa fa-check"></i><b>40.3</b> NumericVector类</a><ul>
+<li class="chapter" data-level="40.3.1" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-num-ex1"><i class="fa fa-check"></i><b>40.3.1</b> 示例1：计算元素<span class="math inline">\(p\)</span>次方的和</a></li>
+<li class="chapter" data-level="40.3.2" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-num-ex2"><i class="fa fa-check"></i><b>40.3.2</b> 示例2：<code>clone</code>函数</a></li>
+<li class="chapter" data-level="40.3.3" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-num-ex3"><i class="fa fa-check"></i><b>40.3.3</b> 示例3：向量子集</a></li>
+</ul></li>
+<li class="chapter" data-level="40.4" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-mat"><i class="fa fa-check"></i><b>40.4</b> NumericMatrix类</a><ul>
+<li class="chapter" data-level="40.4.1" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-mat-ex1"><i class="fa fa-check"></i><b>40.4.1</b> 示例1：计算矩阵各列模的最大值</a></li>
+<li class="chapter" data-level="40.4.2" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-mat-ex2"><i class="fa fa-check"></i><b>40.4.2</b> 示例2：把输入矩阵制作副本计算元素平方根</a></li>
+<li class="chapter" data-level="40.4.3" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-mat-ex3"><i class="fa fa-check"></i><b>40.4.3</b> 示例3：访问列子集</a></li>
+</ul></li>
+<li class="chapter" data-level="40.5" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-other"><i class="fa fa-check"></i><b>40.5</b> Rcpp的其它向量类</a><ul>
+<li class="chapter" data-level="40.5.1" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-logic"><i class="fa fa-check"></i><b>40.5.1</b> Rcpp的LogicalVector类</a></li>
+<li class="chapter" data-level="40.5.2" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-vectype-char"><i class="fa fa-check"></i><b>40.5.2</b> Rcpp的CharacterVector类型</a></li>
+</ul></li>
+<li class="chapter" data-level="40.6" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-types"><i class="fa fa-check"></i><b>40.6</b> Rcpp提供的其它数据类型</a><ul>
+<li class="chapter" data-level="40.6.1" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-types-named"><i class="fa fa-check"></i><b>40.6.1</b> Named类型</a></li>
+<li class="chapter" data-level="40.6.2" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-types-list"><i class="fa fa-check"></i><b>40.6.2</b> List类型</a></li>
+<li class="chapter" data-level="40.6.3" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-types-df"><i class="fa fa-check"></i><b>40.6.3</b> Rcpp的DataFrame类</a></li>
+<li class="chapter" data-level="40.6.4" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-types-func"><i class="fa fa-check"></i><b>40.6.4</b> Rcpp的Function类</a></li>
+<li class="chapter" data-level="40.6.5" data-path="rcpp-vectype.html"><a href="rcpp-vectype.html#rcpp-types-environ"><i class="fa fa-check"></i><b>40.6.5</b> Rcpp的Environment类</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="41" data-path="rcpp-sugar.html"><a href="rcpp-sugar.html"><i class="fa fa-check"></i><b>41</b> Rcpp糖</a><ul>
+<li class="chapter" data-level="41.1" data-path="rcpp-sugar.html"><a href="rcpp-sugar.html#rcpp-sugar-examp"><i class="fa fa-check"></i><b>41.1</b> 简单示例</a></li>
+<li class="chapter" data-level="41.2" data-path="rcpp-sugar.html"><a href="rcpp-sugar.html#rcpp-sugar-vecop"><i class="fa fa-check"></i><b>41.2</b> 向量化的运算符</a><ul>
+<li class="chapter" data-level="41.2.1" data-path="rcpp-sugar.html"><a href="rcpp-sugar.html#rcpp-sugar-vecop-arith"><i class="fa fa-check"></i><b>41.2.1</b> 向量化的四则运算</a></li>
+<li class="chapter" data-level="41.2.2" data-path="rcpp-sugar.html"><a href="rcpp-sugar.html#rcpp-sugar-vecop-binop"><i class="fa fa-check"></i><b>41.2.2</b> 向量化的二元逻辑运算</a></li>
+<li class="chapter" data-level="41.2.3" data-path="rcpp-sugar.html"><a href="rcpp-sugar.html#rcpp-sugar-vecop-uop"><i class="fa fa-check"></i><b>41.2.3</b> 向量化的一元运算符</a></li>
+</ul></li>
+<li class="chapter" data-level="41.3" data-path="rcpp-sugar.html"><a href="rcpp-sugar.html#rcpp-sugar-mathfunc"><i class="fa fa-check"></i><b>41.3</b> 用Rcpp访问数学函数</a></li>
+<li class="chapter" data-level="41.4" data-path="rcpp-sugar.html"><a href="rcpp-sugar.html#rcpp-sugar-any"><i class="fa fa-check"></i><b>41.4</b> 返回单一逻辑值的函数</a></li>
+<li class="chapter" data-level="41.5" data-path="rcpp-sugar.html"><a href="rcpp-sugar.html#rcpp-sugar-expfunc"><i class="fa fa-check"></i><b>41.5</b> 返回糖表达式的函数</a></li>
+<li class="chapter" data-level="41.6" data-path="rcpp-sugar.html"><a href="rcpp-sugar.html#rcpp-sugar-diff"><i class="fa fa-check"></i><b>41.6</b> R与Rcpp不同语法示例</a></li>
+</ul></li>
+<li class="chapter" data-level="42" data-path="rcpp-package.html"><a href="rcpp-package.html"><i class="fa fa-check"></i><b>42</b> 用Rcpp帮助制作R扩展包</a><ul>
+<li class="chapter" data-level="42.1" data-path="rcpp-package.html"><a href="rcpp-package.html#rcpp-package-wo"><i class="fa fa-check"></i><b>42.1</b> 不用扩展包共享C++代码的方法</a></li>
+<li class="chapter" data-level="42.2" data-path="rcpp-package.html"><a href="rcpp-package.html#rcpp-package-gen"><i class="fa fa-check"></i><b>42.2</b> 生成扩展包</a><ul>
+<li class="chapter" data-level="42.2.1" data-path="rcpp-package.html"><a href="rcpp-package.html#rcpp-package-gen-exist"><i class="fa fa-check"></i><b>42.2.1</b> 利用已有基于Rcpp属性的源程序制作扩展包</a></li>
+<li class="chapter" data-level="42.2.2" data-path="rcpp-package.html"><a href="rcpp-package.html#rcpp-package-gen-desc"><i class="fa fa-check"></i><b>42.2.2</b> DESCRIPTION文件</a></li>
+<li class="chapter" data-level="42.2.3" data-path="rcpp-package.html"><a href="rcpp-package.html#rcpp-package-gen-namespace"><i class="fa fa-check"></i><b>42.2.3</b> NAMESPACE文件</a></li>
+</ul></li>
+<li class="chapter" data-level="42.3" data-path="rcpp-package.html"><a href="rcpp-package.html#rcpp-package-recomp"><i class="fa fa-check"></i><b>42.3</b> 重新编译</a></li>
+<li class="chapter" data-level="42.4" data-path="rcpp-package.html"><a href="rcpp-package.html#rcpp-package-interface"><i class="fa fa-check"></i><b>42.4</b> 建立C++用的接口界面</a></li>
+</ul></li>
+<li class="part"><span><b>X 编程例子</b></span></li>
+<li class="chapter" data-level="43" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>43</b> R编程例子</a><ul>
+<li class="chapter" data-level="43.1" data-path="examples.html"><a href="examples.html#examples-rlang"><i class="fa fa-check"></i><b>43.1</b> R语言</a><ul>
+<li class="chapter" data-level="43.1.1" data-path="examples.html"><a href="examples.html#examples-rlang-inverse"><i class="fa fa-check"></i><b>43.1.1</b> 用向量作逆变换</a></li>
+<li class="chapter" data-level="43.1.2" data-path="examples.html"><a href="examples.html#examples-rlang-fibonacci"><i class="fa fa-check"></i><b>43.1.2</b> 斐波那契数列计算</a></li>
+<li class="chapter" data-level="43.1.3" data-path="examples.html"><a href="examples.html#examples-rlang-permutation"><i class="fa fa-check"></i><b>43.1.3</b> 穷举所有排列</a></li>
+<li class="chapter" data-level="43.1.4" data-path="examples.html"><a href="examples.html#examples-rlang-repgroup"><i class="fa fa-check"></i><b>43.1.4</b> 可重复分组方式穷举</a></li>
+<li class="chapter" data-level="43.1.5" data-path="examples.html"><a href="examples.html#examples-rlang-runs"><i class="fa fa-check"></i><b>43.1.5</b> 升降连计数</a></li>
+</ul></li>
+<li class="chapter" data-level="43.2" data-path="examples.html"><a href="examples.html#examples-prob"><i class="fa fa-check"></i><b>43.2</b> 概率</a><ul>
+<li class="chapter" data-level="43.2.1" data-path="examples.html"><a href="examples.html#examples-prob-thsage"><i class="fa fa-check"></i><b>43.2.1</b> 智者千虑必有一失</a></li>
+<li class="chapter" data-level="43.2.2" data-path="examples.html"><a href="examples.html#examples-prob-coupleseats"><i class="fa fa-check"></i><b>43.2.2</b> 圆桌夫妇座位问题</a></li>
+</ul></li>
+<li class="chapter" data-level="43.3" data-path="examples.html"><a href="examples.html#examples-scicomp"><i class="fa fa-check"></i><b>43.3</b> 科学计算</a><ul>
+<li class="chapter" data-level="43.3.1" data-path="examples.html"><a href="examples.html#examples-scicomp-citylink"><i class="fa fa-check"></i><b>43.3.1</b> 城市间最短路径</a></li>
+<li class="chapter" data-level="43.3.2" data-path="examples.html"><a href="examples.html#examples-scicomp-daub"><i class="fa fa-check"></i><b>43.3.2</b> Daubechies小波函数计算</a></li>
+<li class="chapter" data-level="43.3.3" data-path="examples.html"><a href="examples.html#examples-scicomp-heating"><i class="fa fa-check"></i><b>43.3.3</b> 房间加热温度变化</a></li>
+</ul></li>
+<li class="chapter" data-level="43.4" data-path="examples.html"><a href="examples.html#examples-statcomp"><i class="fa fa-check"></i><b>43.4</b> 统计计算</a><ul>
+<li class="chapter" data-level="43.4.1" data-path="examples.html"><a href="examples.html#examples-statcomp-kernden"><i class="fa fa-check"></i><b>43.4.1</b> 核回归与核密度估计</a></li>
+<li class="chapter" data-level="43.4.2" data-path="examples.html"><a href="examples.html#examples-statcomp-mcquad2d"><i class="fa fa-check"></i><b>43.4.2</b> 二维随机模拟积分</a></li>
+<li class="chapter" data-level="43.4.3" data-path="examples.html"><a href="examples.html#examples-statcomp-hidfreq"><i class="fa fa-check"></i><b>43.4.3</b> 潜周期估计</a></li>
+<li class="chapter" data-level="43.4.4" data-path="examples.html"><a href="examples.html#examples-statcomp-armaest"><i class="fa fa-check"></i><b>43.4.4</b> ARMA(1,1)模型估计</a></li>
+<li class="chapter" data-level="43.4.5" data-path="examples.html"><a href="examples.html#examples-statcomp-varprop"><i class="fa fa-check"></i><b>43.4.5</b> VAR模型平稳性</a></li>
+<li class="chapter" data-level="43.4.6" data-path="examples.html"><a href="examples.html#examples-statcomp-storereliab"><i class="fa fa-check"></i><b>43.4.6</b> 贮存可靠性评估</a></li>
+</ul></li>
+<li class="chapter" data-level="43.5" data-path="examples.html"><a href="examples.html#examples-datatreat"><i class="fa fa-check"></i><b>43.5</b> 数据处理</a><ul>
+<li class="chapter" data-level="43.5.1" data-path="examples.html"><a href="examples.html#examples-datatreat-subscore"><i class="fa fa-check"></i><b>43.5.1</b> 小题分题型分数汇总</a></li>
+<li class="chapter" data-level="43.5.2" data-path="examples.html"><a href="examples.html#examples-datatreat-cluslab"><i class="fa fa-check"></i><b>43.5.2</b> 类别编号重排</a></li>
+</ul></li>
+<li class="chapter" data-level="43.6" data-path="examples.html"><a href="examples.html#examples-texttr"><i class="fa fa-check"></i><b>43.6</b> 文本处理</a><ul>
+<li class="chapter" data-level="43.6.1" data-path="examples.html"><a href="examples.html#examples-texttr-hongloument"><i class="fa fa-check"></i><b>43.6.1</b> 用R语言下载处理《红楼梦》htm文件</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="http://www.math.pku.edu.cn/teachers/lidf/" target="blank">编著：李东风</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R语言教程</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="knitr" class="section level1">
+<h1><span class="header-section-number">20</span> 用R制作研究报告</h1>
+<p>一个统计或数据分析的科研项目，
+都会产生一个或多个研究报告。
+因为使用统计与数据分析不可避免地有很多计算涉及在内，
+这里假设使用R软件做了计算。
+科研是一个不断改进的过程，
+所以每一次重新做了计算，
+研究报告中的汇总表格、图形都要更新。
+这样的任务比较繁琐，
+也容易出错。</p>
+<p>“文学式编程”(literate programming, <span class="citation">(Knuth <a href="#ref-Knuth1984:literate" role="doc-biblioref">1984</a>)</span>)是这样一种思想，
+把撰写报告与计算程序有机地结合在一起，
+用一个源文件文件既包含报告内容，
+又包含计算程序。
+每次产生研究报告时，
+先运行源文件中的计算程序得到计算结果，
+这些结果包括文字性内容与图形，
+然后利用适当软件自动地把这些原始文字、计算结果组合成最终的报告。
+利用这样的思想，
+可以自动生成重复的例行报告，
+还可以作为“可重复科学研究”的载体。</p>
+<p>上述的源文件一般是文本文件，
+格式可以是Markdown格式，
+也可以是LaTeX格式等许多格式。
+R的knitr软件包就是用来支持这样的编程思想的一个扩展包。</p>
+<p>Markdown是一种很简单的文本文件格式，
+通常保存为.md扩展名，
+利用R程序进行扩展的版本保存为.Rmd扩展名。
+Markdown文件里面有一些简单的格式标注方法，
+比如两个星号之间的文字会转化为斜体，
+缩进四个空格或一个制表符的内容会看成代码。
+Markdown仅适用于比较简单的文章、源程序说明等，
+不太适用于复杂的含有大量数学公式、图表的文章，
+从markdown格式比较适合转换为html(网页)格式，
+也可以转换为MS Word的docx格式，
+通过LaTeX编译器可以转换为PDF格式，
+也可以将docx转存为PDF格式，
+或者用输出到PDF文件的打印机将网页格式转换为PDF格式。</p>
+<p>LaTeX是一个文档排版系统，
+功能强大，结果美观，
+设计合理。
+缺点是需要学习类似于HTML的另一种语言。
+LaTeX源文件主要是编译为PDF。</p>
+<p>R扩展包knitr包支持在Markdown格式、LaTeX格式等类型的文件中插入R代码，
+经过转换，
+文中的R代码可以变成代码的结果文字、表格、图形，
+与原有报告文字有机地结合在一起。</p>
+<p>插入了R代码的markdowng格式的文件一般以<code>.Rmd</code>为扩展名，
+R的rmarkdown扩展包和knitr包一起为Rmd格式提供了支持。</p>
+<p>R的bookdown包进一步增强了R Markdown格式的功能，
+支持生成PDF、多文件互相链接的HTML、Word等输出，
+其中的表格、图形可以变成浮动表，
+公式、定理可以自动编号并支持文献、公式、定理、图表、章节的引用和链接，
+所以比较适用于编写一本书或论文、研究报告。</p>
+<p>knitr包也支持在LaTeX源文件中插入R代码，
+通过编译使得R代码运行结果、图形自动插入生成的研究报告中。
+原来有一个Sweave扩展包是支持在LaTeX中插入R代码的，
+现在knitr的功能已经涵盖并增强了此包功能。</p>
+<p>下面几章分别介绍markdown格式、R markdown格式、bookdown扩展包、简易网站制作和幻灯片制作。
+参考：</p>
+<ul>
+<li><span class="citation">(Xie, Allaire, and Grolemund <a href="#ref-Xie2019:rmarkdown" role="doc-biblioref">2019</a>)</span></li>
+<li><span class="citation">(Xie <a href="#ref-Xie2017:bookdown" role="doc-biblioref">2017</a>)</span></li>
+</ul>
+<p>利用R Markdown格式可以执行如下的任务：</p>
+<ul>
+<li>将单一的R Markdown文件编译为不同的格式，如：
+<ul>
+<li>HTML;</li>
+<li>PDF;</li>
+<li>MS Word。</li>
+</ul></li>
+<li>在RStudio软件内制作笔记本文档，可以在其中包含说明文字与R代码，
+可以在笔记本文档内交互地运行R代码并能将结果交互地显示在笔记本内。</li>
+<li>生成演示幻灯片，可以是基于HTML5的，也可以是基于LaTeX beamer扩展包的，
+或者MS Powerpoint。</li>
+<li>编写多章节组成的书籍。</li>
+<li>编写期刊论文。</li>
+<li>制作网站或者博客。</li>
+<li>制作商业智能仪表盘(dashboards)，即数据可视化展示。</li>
+</ul>
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Knuth1984:literate">
+<p>Knuth, Donald E. 1984. “Literate Programming.” <em>The Computer Journal</em> 27 (2): 97–111.</p>
+</div>
+<div id="ref-Xie2017:bookdown">
+<p>Xie, Yihui. 2017. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>.</p>
+</div>
+<div id="ref-Xie2019:rmarkdown">
+<p>Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2019. <em>R Markdown: The Definitive Guide</em>. CRC Press. <a href="https://bookdown.org/yihui/rmarkdown/">https://bookdown.org/yihui/rmarkdown/</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="p-advfunc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="static/js/app.min.js"></script>
+<script src="static/js/lunr.js"></script>
+<script src="static/js/clipboard.min.js"></script>
+<script src="static/js/plugin-search.js"></script>
+<script src="static/js/plugin-sharing.js"></script>
+<script src="static/js/plugin-fontsettings.js"></script>
+<script src="static/js/plugin-bookdown.js"></script>
+<script src="static/js/jquery.highlight.js"></script>
+<script src="static/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Rbook.pdf"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<div style="display:none">
+    <script src="http://s11.cnzz.com/z_stat.php?id=610720&web_id=610720" language="JavaScript"></script>
+</div>
+
+</body>
+
+</html>
